@@ -1,5 +1,15 @@
 import {Facebook, Linkedin, ArrowRight, Github, Download, ArrowLeft} from 'lucide-react';
 import profile from '../images/32f9a197f5ec443550682f085a06feb0.jpg';
+import java from '../images/language-logos/java.png'
+import react from '../images/language-logos/react.png'
+import mysql from '../images/language-logos/icons8-mysql-48.png'
+import mongodb from '../images/language-logos/icons8-mongo-db-48.png'
+import python from '../images/language-logos/icons8-python-48.png'
+import nodejs from '../images/language-logos/icons8-nodejs-48.png'
+import html from '../images/language-logos/icons8-html-48.png'
+import css from '../images/language-logos/icons8-css-48.png'
+import js from '../images/language-logos/icons8-js-48.png'
+import figma from '../images/language-logos/icons8-figma-48.png'
 
 export default function PortfolioHomepage() {
 
@@ -9,61 +19,61 @@ export default function PortfolioHomepage() {
         {
             name: "Java",
             color: "from-red-500 to-orange-500",
-            icon: "☕",
+            icon: java,
             category: "Backend"
         },
         {
             name: "MySQL",
             color: "from-blue-600 to-blue-400",
-            icon: "🗃️", // Database icon
+            icon: mysql,
             category: "Database"
         },
         {
             name: "MongoDB",
             color: "from-green-600 to-green-400",
-            icon: "🍃", // Leaf icon for MongoDB
+            icon: mongodb,
             category: "Database"
         },
         {
             name: "Python",
             color: "from-yellow-500 to-blue-500",
-            icon: "🐍", // Snake icon for Python
+            icon: python,
             category: "Backend"
         },
         {
             name: "HTML",
             color: "from-orange-600 to-red-500",
-            icon: "🌐", // Web icon
+            icon: html,
+            category: "Frontend"
+        },
+        {
+            name: "React",
+            color: "from-cyan-400 to-blue-500",
+            icon: react, // Atom icon for React
             category: "Frontend"
         },
         {
             name: "CSS",
             color: "from-blue-500 to-purple-500",
-            icon: "🎨", // Art palette icon
+            icon: css,
             category: "Frontend"
         },
         {
             name: "JavaScript",
             color: "from-yellow-400 to-yellow-600",
-            icon: "⚡", // Lightning for JS
+            icon: js,
             category: "Frontend"
         },
         {
             name: "Node.js",
             color: "from-green-500 to-green-700",
-            icon: "⚙️", // Gear icon for Node
+            icon: nodejs,
             category: "Backend"
-        },
-        {
-            name: "React",
-            color: "from-cyan-400 to-blue-500",
-            icon: "⚛️", // Atom icon for React
-            category: "Frontend"
         },
         {
             name: "Figma",
             color: "from-purple-500 to-pink-500",
-            icon: "🎯", // Target icon for design
+            icon: figma,
             category: "Design"
         }
     ];
@@ -387,14 +397,15 @@ export default function PortfolioHomepage() {
 
                                         {/* Inner Content */}
                                         <div className="absolute inset-6 flex flex-col items-center justify-center">
-                                            <div className={`text-3xl lg:text-4xl mb-2 group-hover:scale-110 transition-transform duration-300`}>
-                                                {skill.icon}
+                                            <div className={`mb-2 group-hover:scale-110 transition-transform duration-300`}>
+                                                {/* Image icon */}
+                                                <img src={skill.icon} alt={skill.name} className="w-12 h-12 lg:w-16 lg:h-16" />
                                             </div>
                                             <div className="text-xs lg:text-sm font-semibold text-white/80 text-center leading-tight">
                                                 {skill.name}
                                             </div>
-
                                         </div>
+
 
                                         {/* Floating Indicators */}
                                         <div className="absolute -top-1 -right-1 w-3 h-3 bg-blue-400 rounded-full animate-ping opacity-0 group-hover:opacity-100"></div>

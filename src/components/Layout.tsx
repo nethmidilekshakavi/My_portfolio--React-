@@ -1,5 +1,4 @@
 import { Outlet } from "react-router-dom"
-import Portfolio from "./PortfolioHomepage.tsx";
 import PortfolioHomepage from "./PortfolioHomepage.tsx";
 
 const Layout = () => {

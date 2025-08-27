@@ -9,9 +9,11 @@ import {
     Tag,
     ExternalLink,
     Star, Palette, Search, Code, Send, Instagram, Phone, Mail,
-    MapPin, Heart, ArrowUp
+    MapPin, Heart, ArrowUp, Youtube
 } from 'lucide-react';
-import profile from '../images/32f9a197f5ec443550682f085a06feb0.jpg';
+
+import { FaFacebookF, FaGithub, FaLinkedinIn, FaYoutube } from 'react-icons/fa';
+import profile from '../images/proPic/Adobe Express - file.png';
 import java from '../images/language-logos/java.png'
 import react from '../images/language-logos/react.png'
 import mysql from '../images/language-logos/icons8-mysql-48.png'
@@ -27,6 +29,8 @@ import engishTeacher from '../images/projects images/engish-teacher.png'
 import jsp from '../images/projects images/jsp.png'
 import lib from '../images/projects images/lib.png'
 import dne from '../images/projects images/DNE.png'
+import proPic from '../images/proPic/WhatsApp Image 2025-07-28 at 08.22.24_2a126f02.jpg'
+import proPic2 from '../images/proPic/WhatsApp Image 2025-08-16 at 08.13.28_3136f8c6.jpg'
 import emailjs from 'emailjs-com';
 
 
@@ -109,7 +113,6 @@ export default function PortfolioHomepage() {
             technologies: ["Spring Boot", "Java", "REST API", "HTML", "CSS", "JavaScript", "Payment Gateway"],
             category: "Full Stack",
             status: "Completed",
-            year: "2024",
             githubBackendUrl: "https://github.com/nethmidilekshakavi/Spring-Boot-Final-Backend.git",
             githubFrontendUrl: "https://github.com/nethmidilekshakavi/2nd-FinalProject-Frontend.git",
             highlights: ["API-driven frontend", "Secure payment processing", "Admin dashboard", "Responsive design"]
@@ -122,7 +125,6 @@ export default function PortfolioHomepage() {
             technologies: ["HTML", "CSS", "JavaScript", "Form handling", "Responsive Design"],
             category: "Frontend",
             status: "Completed",
-            year: "2025",
             liveUrl: "www.ceetcenglishacademy.com",
             highlights: [
                 "Interactive UI (lesson sections, FAQs)",
@@ -141,9 +143,7 @@ export default function PortfolioHomepage() {
             technologies: ["JavaEE", "JSP", "Servlets", "JDBC", "Connection Pooling", "MySQL"],
             category: "Full Stack",
             status: "Completed",
-            year: "2024",
             githubUrl: "https://github.com/your-username/ecommerce-app", // replace with actual repo
-            liveUrl: "#",
             highlights: [
                 "Layered architecture (DAO, Service, Controller)",
                 "User authentication & session management",
@@ -160,10 +160,8 @@ export default function PortfolioHomepage() {
             technologies: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
             category: "Full Stack",
             status: "Completed",
-            year: "2024",
             githubBackendUrl: "https://github.com/nethmidilekshakavi/book-club-library-backend.git",
             githubFrontendUrl: "https://github.com/nethmidilekshakavi/book-club-library-frontend.git",
-            liveUrl: "#",
             highlights: [
                 "Role-based auth (Admin, Librarian, Member)",
                 "Book CRUD with cover uploads",
@@ -181,9 +179,7 @@ export default function PortfolioHomepage() {
             technologies: ["React.js", "JavaScript", "HTML", "CSS", "EmailJS"],
             category: "UI UX",
             status: "Completed",
-            year: "2024",
             githubUrl: "https://www.figma.com/design/jF0veGq8hxp5w12X9USybR/DNE-CAFE-MANAGEMENT?node-id=0-1&p=f&t=Iwe74qCKG6WQUUiQ-0",
-            liveUrl: "#",
             highlights: [
                 "Responsive React-based front-end",
                 "Email-based booking form integration",
@@ -308,6 +304,11 @@ export default function PortfolioHomepage() {
             });
     };
 
+    const [visibleCount, setVisibleCount] = useState(3);
+
+    const loadMore = () => {
+        setVisibleCount((prev) => Math.min(prev + 3, projects.length));
+    };
 
     return (
         <div
@@ -361,30 +362,27 @@ export default function PortfolioHomepage() {
                     </p>
 
                     <div className="flex items-center space-x-4">
-                        <a href="#about">
-                            <button className="group relative bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 px-8 py-4 rounded-full font-medium flex items-center justify-center space-x-3 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25 transform-gpu">
-                                <span className="relative z-10">GET IN TOUCH</span>
-                                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                                <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-300"></div>
-                            </button>
-                        </a>
                         <div className="flex space-x-3">
-                            <a href="#" className="w-12 h-12 bg-blue-600 hover:bg-blue-700 rounded-full flex items-center justify-center transition-colors">
-                                <Facebook className="w-5 h-5" />
+                            <a href="https://web.facebook.com/nethmi.kavindi.14289?_rdc=1&_rdr#" target="_blank" rel="noreferrer" className="w-12 h-12 bg-blue-600 hover:bg-blue-700 rounded-full flex items-center justify-center transition-colors">
+                                <FaFacebookF className="w-5 h-5 text-white" />
                             </a>
-                            <a href="#" className="w-12 h-12 bg-pink-500 hover:bg-pink-600 rounded-full flex items-center justify-center transition-colors">
-                                <Github className="w-5 h-5" />
+                            <a href="https://github.com/nethmidilekshakavi" target="_blank" rel="noreferrer" className="w-12 h-12 bg-gray-800 hover:bg-gray-900 rounded-full flex items-center justify-center transition-colors">
+                                <FaGithub className="w-5 h-5 text-white" />
                             </a>
-                            <a href="#" className="w-12 h-12 bg-blue-600 hover:bg-blue-700 rounded-full flex items-center justify-center transition-colors">
-                                <Linkedin className="w-5 h-5" />
+                            <a href="https://www.linkedin.com/in/nethmi-dileksha-85b268319/" target="_blank" rel="noreferrer" className="w-12 h-12 bg-blue-700 hover:bg-blue-800 rounded-full flex items-center justify-center transition-colors">
+                                <FaLinkedinIn className="w-5 h-5 text-white" />
+                            </a>
+                            <a href="http://www.youtube.com/@nethmidileksha413" target="_blank" rel="noreferrer" className="w-12 h-12 bg-red-600 hover:bg-red-700 rounded-full flex items-center justify-center transition-colors">
+                                <FaYoutube className="w-5 h-5 text-white" />
                             </a>
                         </div>
+
                     </div>
                 </div>
 
                 {/* Right Content */}
                 <div className="flex-1 flex justify-center items-center relative mt-12 md:mt-0">
-                    <div className="w-80 h-96 bg-gradient-to-br from-slate-700 to-slate-900 rounded-2xl border border-slate-600 shadow-2xl overflow-hidden">
+                    <div className="w-[500px] h-[500px]  bg-gradient-to-br overflow-hidden rounded-2xl">
                         <img
                             src={profile}
                             alt="Profile"
@@ -392,6 +390,7 @@ export default function PortfolioHomepage() {
                         />
                     </div>
                 </div>
+
             </section>
 
             {/*--------------------------------------------------------------------------------------------------------*/}
@@ -451,7 +450,7 @@ export default function PortfolioHomepage() {
 
                             {/* Profile Image */}
                             <img
-                                src={profile}
+                                src={proPic}
                                 alt="About Profile"
                                 className="relative z-10 w-full h-full object-cover rounded-3xl"
                             />
@@ -504,17 +503,10 @@ export default function PortfolioHomepage() {
 
                     {/* Buttons */}
                     <div className="flex flex-col sm:flex-row gap-4">
-                        <a href="#skills">
-                            <button className="group relative bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 px-8 py-4 rounded-full font-medium flex items-center justify-center space-x-3 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25 transform-gpu">
-                                <span className="relative z-10">GET IN TOUCH</span>
-                                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                                <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-300"></div>
-                            </button>
-                        </a>
 
                         <a href="../pdf/Dileksha_Kavindi_Professional_CV.pdf" download="Dileksha_Kavindi_Professional_CV.pdf">
-                            <button className="group relative bg-slate-800/50 backdrop-blur-sm border border-slate-600/50 hover:bg-slate-700/70 hover:border-blue-400/50 px-8 py-4 rounded-full font-medium flex items-center justify-center space-x-3 transition-all duration-300 hover:scale-105">
-                                <Download className="w-5 h-5 group-hover:-translate-y-1 transition-transform duration-300" />
+                            <button className="group relative bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 px-8 py-4 rounded-full font-medium flex items-center justify-center space-x-3 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25 transform-gpu">
+                               <Download className="w-5 h-5 group-hover:-translate-y-1 transition-transform duration-300" />
                                 <span>DOWNLOAD CV</span>
                                 <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                             </button>
@@ -650,173 +642,129 @@ export default function PortfolioHomepage() {
                                 </div>
                             </div>
                         ))}
-                        <a href="#about">
-                            <button className="group relative bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 px-8 py-4 rounded-full font-medium flex items-center justify-center space-x-3 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25 transform-gpu">
-                                <span className="relative z-10">GET IN TOUCH</span>
-                                <ArrowLeft className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                                <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-300"></div>
-                            </button>
-                        </a>
+
                     </div>
                 </div>
             </section>
 
-
-            {/*projects section*/}
-            <section id="projects"
-                     className="relative min-h-screen py-20 px-8 max-w-7xl mx-auto snap-start overflow-hidden mt-[-90px]">
-                {/* Right: Projects Showcase */}
-                <div className="space-y-8">
-                    <div className="text-center mb-16" data-aos="fade-up">
-                        <p className="text-blue-300 text-sm tracking-[0.3em] mb-4 font-light">
-                            M Y  P R O J E C T S
-                        </p>
-                        <h2 className="text-4xl lg:text-5xl font-bold mb-8 leading-tight">
-
-            <span className="bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 animate-gradient-text">
+            <section
+            id="projects"
+            className="relative py-20 px-8 max-w-7xl mx-auto mt-[-90px]"
+            >
+        {/* Section Header */}
+            <div className="text-center mb-16">
+                <p className="text-blue-300 text-sm tracking-[0.3em] mb-4 font-light">
+                    M Y  P R O J E C T S
+                </p>
+                <h2 className="text-4xl lg:text-5xl font-bold mb-8 leading-tight">
+          <span className="bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 animate-gradient-text">
             TECHNICAL EXPERTISE
-            </span>
-                        </h2>
-                        <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
-                            Crafting digital solutions with modern technologies and creative problem-solving
-                        </p>
-                    </div>
+          </span>
+                </h2>
+                <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
+                    Crafting digital solutions with modern technologies and creative problem-solving
+                </p>
+            </div>
 
-                    {/* Project Navigation */}
-                    <div className="flex space-x-2 mb-8">
-                        {projects.map((project, index) => (
-                            <button
-                                key={project.id}
-                                onClick={() => setActiveProject(index)}
-                                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                                    activeProject === index
-                                        ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg'
-                                        : 'bg-slate-800/50 text-gray-300 hover:bg-slate-700/50'
-                                }`}
-                            >
-                                {String(index + 1).padStart(2, '0')}
-                            </button>
-                        ))}
-                    </div>
+            {/* Projects Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 snap-start">
+                {projects.slice(0, visibleCount).map((project) => (
+                    <div
+                        key={project.id}
+                        className="relative bg-slate-800/30 backdrop-blur-sm border border-slate-600/50 rounded-3xl overflow-hidden group hover:border-blue-400/50 transition-all duration-500"
+                    >
+                        {/* Project Image */}
+                        <div className="relative h-60 overflow-hidden rounded-t-3xl">
+                            <img
+                                src={project.image}
+                                alt={project.title}
+                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
 
-                    {/* Active Project Display */}
-                    <div className="relative">
-                        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900/20 to-purple-900/20 rounded-3xl blur-xl" />
-                        <div className="relative bg-slate-800/30 backdrop-blur-sm border border-slate-600/50 rounded-3xl overflow-hidden group hover:border-blue-400/50 transition-all duration-500">
-                            {/* Project Image */}
-                            <div className="relative h-90 bg-gradient-to-br from-slate-700 to-slate-800 overflow-hidden">
-                                <img
-                                    src={projects[activeProject].image}
-                                    alt={projects[activeProject].title}
-                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
+                        </div>
 
+                        {/* Project Content */}
+                        <div className="p-6">
+                            <div className="flex items-center space-x-2 mb-2">
+                                <Tag className="w-4 h-4 text-purple-400" />
+                                <span className="text-purple-300 text-sm">{project.category}</span>
+                            </div>
+                            <h4 className="text-xl font-bold text-white mb-3">{project.title}</h4>
+                            <p className="text-gray-300 mb-4 text-sm">{project.description}</p>
 
-                                {/* Project Year */}
-                                <div className="absolute top-4 right-4 flex items-center space-x-1 text-blue-300 text-sm">
-                                    <Calendar className="w-4 h-4" />
-                                    <span>{projects[activeProject].year}</span>
-                                </div>
+                            {/* Technologies */}
+                            <div className="flex flex-wrap gap-2 mb-4">
+                                {project.technologies.map((tech, idx) => (
+                                    <span
+                                        key={idx}
+                                        className="px-3 py-1 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-lg text-sm text-blue-300 font-medium"
+                                    >
+                    {tech}
+                  </span>
+                                ))}
                             </div>
 
-                            {/* Project Content */}
-                            <div className="p-8">
-                                <div className="flex items-start justify-between mb-4">
-                                    <div>
-                                        <div className="flex items-center space-x-2 mb-2">
-                                            <Tag className="w-4 h-4 text-purple-400" />
-                                            <span className="text-purple-300 text-sm">{projects[activeProject].category}</span>
-                                        </div>
-                                        <h4 className="text-2xl font-bold text-white mb-2">{projects[activeProject].title}</h4>
-                                    </div>
-                                    <div className="flex space-x-2">
-                                        <div className="flex gap-3">
-                                            {/* Backend Repo */}
-                                            <a
-                                                href={projects[activeProject].githubBackendUrl}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="p-2 bg-slate-700/50 rounded-full hover:bg-slate-600/50 transition-colors duration-300"
-                                            >
-                                                <Github className="w-5 h-5 text-gray-300" />
-                                                <span className="ml-2 text-sm text-gray-300">Backend</span>
-                                            </a>
-
-                                            {/* Frontend Repo */}
-                                            <a
-                                                href={projects[activeProject].githubFrontendUrl}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="p-2 bg-slate-700/50 rounded-full hover:bg-slate-600/50 transition-colors duration-300"
-                                            >
-                                                <Github className="w-5 h-5 text-gray-300" />
-                                                <span className="ml-2 text-sm text-gray-300">Frontend</span>
-                                            </a>
-                                            {/* Frontend Repo */}
-
-                                        </div>
-
-                                        <a
-                                            href={projects[activeProject].liveUrl}
-                                            className="p-2 bg-slate-700/50 rounded-full hover:bg-slate-600/50 transition-colors duration-300"
-                                        >
-                                            <ExternalLink className="w-5 h-5 text-gray-300" />
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <p className="text-gray-300 mb-6 leading-relaxed">
-                                    {projects[activeProject].description}
-                                </p>
-
-                                {/* Key Highlights */}
-                                <div className="mb-6">
-                                    <h5 className="text-sm font-medium text-blue-300 mb-3">Key Features</h5>
-                                    <div className="flex flex-wrap gap-2">
-                                        {projects[activeProject].highlights.map((highlight, index) => (
-                                            <span key={index} className="flex items-center space-x-1 bg-slate-700/30 px-3 py-1 rounded-full text-sm text-gray-300">
-                          <Star className="w-3 h-3 text-yellow-400" />
-                          <span>{highlight}</span>
-                        </span>
-                                        ))}
-                                    </div>
-                                </div>
-
-                                {/* Technologies */}
-                                <div>
-                                    <h5 className="text-sm font-medium text-blue-300 mb-3">Technologies Used</h5>
-                                    <div className="flex flex-wrap gap-2">
-                                        {projects[activeProject].technologies.map((tech, index) => (
-                                            <span
-                                                key={index}
-                                                className="px-3 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-lg text-sm text-blue-300 font-medium hover:scale-105 transition-transform duration-300"
-                                            >
-                          {tech}
-                        </span>
-                                        ))}
-                                    </div>
-                                </div>
+                            {/* Links */}
+                            <div className="flex space-x-2 mt-2">
+                                {project.githubFrontendUrl && (
+                                    <a
+                                        href={project.githubFrontendUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex items-center gap-2 px-3 py-2 bg-slate-700/50 rounded-lg text-gray-300 hover:bg-slate-600/50 transition-colors"
+                                    >
+                                        <Github className="w-4 h-4" /> Frontend
+                                    </a>
+                                )}
+                                {project.githubBackendUrl && (
+                                    <a
+                                        href={project.githubBackendUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex items-center gap-2 px-3 py-2 bg-slate-700/50 rounded-lg text-gray-300 hover:bg-slate-600/50 transition-colors"
+                                    >
+                                        <Github className="w-4 h-4" /> Backend
+                                    </a>
+                                )}
+                                {project.liveUrl && (
+                                    <a
+                                        href={project.liveUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex items-center px-3 py-2 bg-slate-700/50 rounded-lg text-gray-300 hover:bg-slate-600/50 transition-colors"
+                                    >
+                                        <ExternalLink className="w-4 h-4" />
+                                    </a>
+                                )}
+                                {project.githubUrl && (
+                                    <a
+                                        href={project.githubUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex items-center px-3 py-2 bg-slate-700/50 rounded-lg text-gray-300 hover:bg-slate-600/50 transition-colors"
+                                    >
+                                        <ExternalLink className="w-4 h-4" />
+                                    </a>
+                                )}
                             </div>
                         </div>
                     </div>
+                ))}
+            </div>
 
-                    {/* Project Navigation Dots */}
-                    <div className="flex justify-center space-x-3">
-                        {projects.map((_, index) => (
-                            <button
-                                key={index}
-                                onClick={() => setActiveProject(index)}
-                                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                                    activeProject === index
-                                        ? 'bg-gradient-to-r from-blue-500 to-purple-600 scale-125'
-                                        : 'bg-slate-600 hover:bg-slate-500'
-                                }`}
-                            />
-                        ))}
-                    </div>
+            {/* Load More Button */}
+            {visibleCount < projects.length && (
+                <div className="flex justify-center mt-8">
+                    <button
+                        onClick={loadMore}
+                        className="px-6 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full hover:scale-105 transition-transform"
+                    >
+                        Load More
+                    </button>
                 </div>
-            </section>
+            )}
+        </section>
 
 
             {/*services section*/}
@@ -916,7 +864,9 @@ export default function PortfolioHomepage() {
                             <div className="absolute top-4 right-4 w-2 h-2 bg-blue-400 rounded-full animate-ping opacity-0 group-hover:opacity-100"></div>
                             <div className="absolute bottom-4 left-4 w-1 h-1 bg-purple-400 rounded-full animate-pulse opacity-0 group-hover:opacity-100"></div>
                         </div>
+
                     ))}
+
                 </div>
 
                 {/* Bottom Decorative Elements */}
@@ -978,9 +928,12 @@ export default function PortfolioHomepage() {
                                 <div className="w-full h-full bg-slate-800 rounded-3xl"></div>
                             </div>
 
-                            {/* Placeholder for Profile Image */}
-                            <div className="relative z-10 w-full h-full flex items-center justify-center bg-gradient-to-br from-slate-700 to-slate-800 rounded-3xl">
-                                <div className="text-6xl text-blue-400 opacity-50">👤</div>
+                            <div className="relative z-10 w-full h-full flex items-center justify-center bg-gradient-to-br from-slate-700 to-slate-800 rounded-3xl overflow-hidden">
+                                <img
+                                    src={proPic2} // proPic should be a URL or imported image
+                                    alt="Profile"
+                                    className="w-full h-full object-cover opacity-60"
+                                />
                             </div>
 
                             {/* Overlay Effects */}
@@ -1156,22 +1109,18 @@ export default function PortfolioHomepage() {
                                 Turning ideas into digital reality with modern technologies.
                             </p>
                             <div className="flex space-x-4">
-                                <a href="#" className="group relative w-10 h-10 bg-slate-700/50 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-all duration-300 hover:scale-110">
-                                    <Facebook className="w-5 h-5 text-gray-400 group-hover:text-white" />
-                                    <div className="absolute inset-0 bg-blue-400/20 rounded-lg opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-300"></div>
-                                </a>
-                                <a href="#" className="group relative w-10 h-10 bg-slate-700/50 rounded-lg flex items-center justify-center hover:bg-pink-600 transition-all duration-300 hover:scale-110">
-                                    <Instagram className="w-5 h-5 text-gray-400 group-hover:text-white" />
-                                    <div className="absolute inset-0 bg-pink-400/20 rounded-lg opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-300"></div>
-                                </a>
-                                <a href="#" className="group relative w-10 h-10 bg-slate-700/50 rounded-lg flex items-center justify-center hover:bg-blue-500 transition-all duration-300 hover:scale-110">
-                                    <Linkedin className="w-5 h-5 text-gray-400 group-hover:text-white" />
-                                    <div className="absolute inset-0 bg-blue-400/20 rounded-lg opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-300"></div>
-                                </a>
-                                <a href="#" className="group relative w-10 h-10 bg-slate-700/50 rounded-lg flex items-center justify-center hover:bg-gray-600 transition-all duration-300 hover:scale-110">
-                                    <Github className="w-5 h-5 text-gray-400 group-hover:text-white" />
-                                    <div className="absolute inset-0 bg-gray-400/20 rounded-lg opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-300"></div>
-                                </a>
+                                    <a href="https://web.facebook.com/nethmi.kavindi.14289?_rdc=1&_rdr#" target="_blank" rel="noreferrer" className="w-12 h-12 bg-blue-600 hover:bg-blue-700 rounded-full flex items-center justify-center transition-colors">
+                                        <FaFacebookF className="w-5 h-5 text-white" />
+                                    </a>
+                                    <a href="https://github.com/nethmidilekshakavi" target="_blank" rel="noreferrer" className="w-12 h-12 bg-gray-800 hover:bg-gray-900 rounded-full flex items-center justify-center transition-colors">
+                                        <FaGithub className="w-5 h-5 text-white" />
+                                    </a>
+                                    <a href="https://www.linkedin.com/in/nethmi-dileksha-85b268319/" target="_blank" rel="noreferrer" className="w-12 h-12 bg-blue-700 hover:bg-blue-800 rounded-full flex items-center justify-center transition-colors">
+                                        <FaLinkedinIn className="w-5 h-5 text-white" />
+                                    </a>
+                                    <a href="http://www.youtube.com/@nethmidileksha413" target="_blank" rel="noreferrer" className="w-12 h-12 bg-red-600 hover:bg-red-700 rounded-full flex items-center justify-center transition-colors">
+                                        <FaYoutube className="w-5 h-5 text-white" />
+                                    </a>
                             </div>
                         </div>
 

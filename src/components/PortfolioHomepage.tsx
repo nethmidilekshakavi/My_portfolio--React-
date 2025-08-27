@@ -1,4 +1,15 @@
-import {Facebook, Linkedin, ArrowRight, Github, Download, ArrowLeft} from 'lucide-react';
+import {
+    Facebook,
+    Linkedin,
+    ArrowRight,
+    Github,
+    Download,
+    ArrowLeft,
+    Calendar,
+    Tag,
+    ExternalLink,
+    Star
+} from 'lucide-react';
 import profile from '../images/32f9a197f5ec443550682f085a06feb0.jpg';
 import java from '../images/language-logos/java.png'
 import react from '../images/language-logos/react.png'
@@ -10,10 +21,15 @@ import html from '../images/language-logos/icons8-html-48.png'
 import css from '../images/language-logos/icons8-css-48.png'
 import js from '../images/language-logos/icons8-js-48.png'
 import figma from '../images/language-logos/icons8-figma-48.png'
+import rtrasnspotSsystem from '../images/projects images/smart-tasnsport-system.png'
+import engishTeacher from '../images/projects images/engish-teacher.png'
+import jsp from '../images/projects images/jsp.png'
+import lib from '../images/projects images/lib.png'
+import dne from '../images/projects images/DNE.png'
+
+import {useState} from "react";
 
 export default function PortfolioHomepage() {
-
-
 
     const skills = [
         {
@@ -78,6 +94,102 @@ export default function PortfolioHomepage() {
         }
     ];
 
+    const [activeProject, setActiveProject] = useState(0);
+
+    // Sample projects data - replace with your actual projects
+    const projects = [
+        {
+            id: 1,
+            title: "Smart Private Transport Booking System",
+            description:
+                "Full-stack transport booking system with a Spring Boot REST API backend and a vanilla HTML/CSS/JavaScript frontend. Includes user authentication, payment gateway integration, and an admin dashboard.",
+            image: rtrasnspotSsystem,
+            technologies: ["Spring Boot", "Java", "REST API", "HTML", "CSS", "JavaScript", "Payment Gateway"],
+            category: "Full Stack",
+            status: "Completed",
+            year: "2024",
+            githubBackendUrl: "https://github.com/nethmidilekshakavi/Spring-Boot-Final-Backend.git",
+            githubFrontendUrl: "https://github.com/nethmidilekshakavi/2nd-FinalProject-Frontend.git",
+            highlights: ["API-driven frontend", "Secure payment processing", "Admin dashboard", "Responsive design"]
+        },
+        {
+            id: 2,
+            title: "English Teacher Website (Freelance)",
+            description: "A freelance English teaching website with an interactive, responsive design and an email contact form for booking lessons and enquiries. Built using plain HTML, CSS and JavaScript.",
+            image: engishTeacher,
+            technologies: ["HTML", "CSS", "JavaScript", "Form handling", "Responsive Design"],
+            category: "Frontend",
+            status: "Completed",
+            year: "2025",
+            liveUrl: "www.ceetcenglishacademy.com",
+            highlights: [
+                "Interactive UI (lesson sections, FAQs)",
+                "Email contact form with client-side validation",
+                "Responsive for mobile and desktop",
+                "Lightweight and SEO-friendly",
+                "Accessible (ARIA, semantic HTML)"
+            ]
+        },
+        {
+            id: 3,
+            title: "E-commerce Web Application",
+            description:
+                "Full-stack e-commerce web application developed using JavaEE, JSP, and JDBC connection pooling. Includes product management, user authentication, cart functionality, and order processing. Built with a layered architecture for scalability and maintainability.",
+            image: jsp,
+            technologies: ["JavaEE", "JSP", "Servlets", "JDBC", "Connection Pooling", "MySQL"],
+            category: "Full Stack",
+            status: "Completed",
+            year: "2024",
+            githubUrl: "https://github.com/your-username/ecommerce-app", // replace with actual repo
+            liveUrl: "#",
+            highlights: [
+                "Layered architecture (DAO, Service, Controller)",
+                "User authentication & session management",
+                "Product catalog & cart system",
+                "Order processing with database transactions",
+                "Scalable JDBC connection pooling"
+            ]
+        },
+        {
+            id: 4,
+            title: "Library Management System",
+            description: "Full-stack Library Management System with React frontend and Node.js/Express backend.",
+            image:lib,
+            technologies: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
+            category: "Full Stack",
+            status: "Completed",
+            year: "2024",
+            githubBackendUrl: "https://github.com/nethmidilekshakavi/book-club-library-backend.git",
+            githubFrontendUrl: "https://github.com/nethmidilekshakavi/book-club-library-frontend.git",
+            liveUrl: "#",
+            highlights: [
+                "Role-based auth (Admin, Librarian, Member)",
+                "Book CRUD with cover uploads",
+                "Borrowing/return workflow",
+                "Reservation system",
+                "Responsive UI"
+            ]
+        },
+        {
+            id: 5,
+            title: "Daffodil Holidays Tourism Website (Freelance)",
+            description:
+                "Developed the front-end UI for a Sri Lankan tourism company website using React.js. Implemented an email-based booking functionality to allow customers to make inquiries and reservations online. Contribution included designing and building the complete responsive user interface.",
+            image: dne,
+            technologies: ["React.js", "JavaScript", "HTML", "CSS", "EmailJS"],
+            category: "UI UX",
+            status: "Completed",
+            year: "2024",
+            githubUrl: "https://www.figma.com/design/jF0veGq8hxp5w12X9USybR/DNE-CAFE-MANAGEMENT?node-id=0-1&p=f&t=Iwe74qCKG6WQUUiQ-0",
+            liveUrl: "#",
+            highlights: [
+                "Responsive React-based front-end",
+                "Email-based booking form integration",
+                "Tourism-focused modern UI design",
+                "Optimized for desktop and mobile devices"
+            ]
+        },
+    ];
 
     return (
         <div
@@ -105,7 +217,8 @@ export default function PortfolioHomepage() {
                     LETS' TALK
                 </button>
             </nav>
-<br/><br/> <br/><br/>
+
+            <br/><br/> <br/><br/>
 
             {/* Hero Section */}
             <section
@@ -166,6 +279,7 @@ export default function PortfolioHomepage() {
 
             {/*--------------------------------------------------------------------------------------------------------*/}
             {/* About Section */}
+
             <section
                 id="about"
                 className="relative h-screen flex flex-col lg:flex-row items-center justify-between gap-16 px-8 max-w-7xl mx-auto snap-start overflow-hidden"
@@ -269,7 +383,6 @@ export default function PortfolioHomepage() {
                                 teaching me the value of teamwork, communication, and attention to detail.
                             </p>
                         </div>
-
                     </div>
 
                     {/* Buttons */}
@@ -429,10 +542,161 @@ export default function PortfolioHomepage() {
                         </a>
                     </div>
                 </div>
+            </section>
+
+            <section id="projects"
+                     className="relative min-h-screen py-20 px-8 max-w-7xl mx-auto snap-start overflow-hidden">
+                {/* Right: Projects Showcase */}
+                <div className="space-y-8">
+                    <div className="text-center mb-16" data-aos="fade-up">
+                        <p className="text-blue-300 text-sm tracking-[0.3em] mb-4 font-light">
+                            M Y  P R O J E C T S
+                        </p>
+                        <h2 className="text-4xl lg:text-5xl font-bold mb-8 leading-tight">
+
+            <span className="bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 animate-gradient-text">
+            TECHNICAL EXPERTISE
+            </span>
+                        </h2>
+                        <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
+                            Crafting digital solutions with modern technologies and creative problem-solving
+                        </p>
+                    </div>
+
+                    {/* Project Navigation */}
+                    <div className="flex space-x-2 mb-8">
+                        {projects.map((project, index) => (
+                            <button
+                                key={project.id}
+                                onClick={() => setActiveProject(index)}
+                                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                                    activeProject === index
+                                        ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg'
+                                        : 'bg-slate-800/50 text-gray-300 hover:bg-slate-700/50'
+                                }`}
+                            >
+                                {String(index + 1).padStart(2, '0')}
+                            </button>
+                        ))}
+                    </div>
+
+                    {/* Active Project Display */}
+                    <div className="relative">
+                        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-3xl blur-xl" />
+                        <div className="relative bg-slate-800/30 backdrop-blur-sm border border-slate-600/50 rounded-3xl overflow-hidden group hover:border-blue-400/50 transition-all duration-500">
+                            {/* Project Image */}
+                            <div className="relative h-90 bg-gradient-to-br from-slate-700 to-slate-800 overflow-hidden">
+                                <img
+                                    src={projects[activeProject].image}
+                                    alt={projects[activeProject].title}
+                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
 
 
+                                {/* Project Year */}
+                                <div className="absolute top-4 right-4 flex items-center space-x-1 text-blue-300 text-sm">
+                                    <Calendar className="w-4 h-4" />
+                                    <span>{projects[activeProject].year}</span>
+                                </div>
+                            </div>
 
+                            {/* Project Content */}
+                            <div className="p-8">
+                                <div className="flex items-start justify-between mb-4">
+                                    <div>
+                                        <div className="flex items-center space-x-2 mb-2">
+                                            <Tag className="w-4 h-4 text-purple-400" />
+                                            <span className="text-purple-300 text-sm">{projects[activeProject].category}</span>
+                                        </div>
+                                        <h4 className="text-2xl font-bold text-white mb-2">{projects[activeProject].title}</h4>
+                                    </div>
+                                    <div className="flex space-x-2">
+                                        <div className="flex gap-3">
+                                            {/* Backend Repo */}
+                                            <a
+                                                href={projects[activeProject].githubBackendUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="p-2 bg-slate-700/50 rounded-full hover:bg-slate-600/50 transition-colors duration-300"
+                                            >
+                                                <Github className="w-5 h-5 text-gray-300" />
+                                                <span className="ml-2 text-sm text-gray-300">Backend</span>
+                                            </a>
 
+                                            {/* Frontend Repo */}
+                                            <a
+                                                href={projects[activeProject].githubFrontendUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="p-2 bg-slate-700/50 rounded-full hover:bg-slate-600/50 transition-colors duration-300"
+                                            >
+                                                <Github className="w-5 h-5 text-gray-300" />
+                                                <span className="ml-2 text-sm text-gray-300">Frontend</span>
+                                            </a>
+                                            {/* Frontend Repo */}
+
+                                        </div>
+
+                                        <a
+                                            href={projects[activeProject].liveUrl}
+                                            className="p-2 bg-slate-700/50 rounded-full hover:bg-slate-600/50 transition-colors duration-300"
+                                        >
+                                            <ExternalLink className="w-5 h-5 text-gray-300" />
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <p className="text-gray-300 mb-6 leading-relaxed">
+                                    {projects[activeProject].description}
+                                </p>
+
+                                {/* Key Highlights */}
+                                <div className="mb-6">
+                                    <h5 className="text-sm font-medium text-blue-300 mb-3">Key Features</h5>
+                                    <div className="flex flex-wrap gap-2">
+                                        {projects[activeProject].highlights.map((highlight, index) => (
+                                            <span key={index} className="flex items-center space-x-1 bg-slate-700/30 px-3 py-1 rounded-full text-sm text-gray-300">
+                          <Star className="w-3 h-3 text-yellow-400" />
+                          <span>{highlight}</span>
+                        </span>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {/* Technologies */}
+                                <div>
+                                    <h5 className="text-sm font-medium text-blue-300 mb-3">Technologies Used</h5>
+                                    <div className="flex flex-wrap gap-2">
+                                        {projects[activeProject].technologies.map((tech, index) => (
+                                            <span
+                                                key={index}
+                                                className="px-3 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-lg text-sm text-blue-300 font-medium hover:scale-105 transition-transform duration-300"
+                                            >
+                          {tech}
+                        </span>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Project Navigation Dots */}
+                    <div className="flex justify-center space-x-3">
+                        {projects.map((_, index) => (
+                            <button
+                                key={index}
+                                onClick={() => setActiveProject(index)}
+                                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                                    activeProject === index
+                                        ? 'bg-gradient-to-r from-blue-500 to-purple-600 scale-125'
+                                        : 'bg-slate-600 hover:bg-slate-500'
+                                }`}
+                            />
+                        ))}
+                    </div>
+                </div>
             </section>
         </div>
     );

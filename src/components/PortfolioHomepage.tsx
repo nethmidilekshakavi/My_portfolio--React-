@@ -8,7 +8,8 @@ import {
     Calendar,
     Tag,
     ExternalLink,
-    Star
+    Star, Palette, Search, Code, Send, Instagram, Phone, Mail,
+    MapPin, Heart, ArrowUp
 } from 'lucide-react';
 import profile from '../images/32f9a197f5ec443550682f085a06feb0.jpg';
 import java from '../images/language-logos/java.png'
@@ -26,8 +27,10 @@ import engishTeacher from '../images/projects images/engish-teacher.png'
 import jsp from '../images/projects images/jsp.png'
 import lib from '../images/projects images/lib.png'
 import dne from '../images/projects images/DNE.png'
+import emailjs from 'emailjs-com';
 
-import {useState} from "react";
+
+import {useEffect, useState} from "react";
 
 export default function PortfolioHomepage() {
 
@@ -96,7 +99,6 @@ export default function PortfolioHomepage() {
 
     const [activeProject, setActiveProject] = useState(0);
 
-    // Sample projects data - replace with your actual projects
     const projects = [
         {
             id: 1,
@@ -191,6 +193,122 @@ export default function PortfolioHomepage() {
         },
     ];
 
+    const services = [
+        {
+            id: 1,
+            icon: <Code className="w-8 h-8" />,
+            title: "Frontend Development",
+            description: "Build interactive, responsive, and modern front-end interfaces using React, HTML, CSS, and JavaScript for an engaging user experience.",
+            rating: 5,
+            color: "from-blue-500 to-cyan-500"
+        },
+        {
+            id: 2,
+            icon: <Code className="w-8 h-8" />,
+            title: "Backend Development",
+            description: "Develop robust server-side applications using Node.js, Spring Boot, JavaEE, and database integration for secure and scalable solutions.",
+            rating: 5,
+            color: "from-purple-500 to-blue-500"
+        },
+        {
+            id: 3,
+            icon: <Palette className="w-8 h-8" />,
+            title: "UI/UX Design",
+            description: "Design visually appealing and user-friendly interfaces with seamless user experiences, wireframes, and prototypes.",
+            rating: 5,
+            color: "from-pink-500 to-purple-500"
+        },
+        {
+            id: 4,
+            icon: <Code className="w-8 h-8" />,
+            title: "Web Development",
+            description: "End-to-end web development solutions, from website design to full-stack implementation, optimized for performance and scalability.",
+            rating: 5,
+            color: "from-green-500 to-cyan-500"
+        },
+    ];
+
+    const renderStars = (rating) => {
+        const fullStars = Math.floor(rating);
+        const hasHalfStar = rating % 1 !== 0;
+        const stars = [];
+
+        for (let i = 0; i < fullStars; i++) {
+            stars.push(
+                <span key={i} className="text-yellow-400 text-lg">★</span>
+            );
+        }
+
+        if (hasHalfStar) {
+            stars.push(
+                <span key="half" className="text-yellow-400 text-lg">☆</span>
+            );
+        }
+
+        return stars;
+    };
+
+    const scrollToHome = () => {
+        const homeSection = document.getElementById("home");
+        if (homeSection) {
+            homeSection.scrollIntoView({ behavior: "smooth" });
+        }
+    };
+
+    const [isVisible, setIsVisible] = useState(false);
+    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+    useEffect(() => {
+        setIsVisible(true);
+
+        const handleMouseMove = (e) => {
+            setMousePosition({
+                x: (e.clientX / window.innerWidth) * 100,
+                y: (e.clientY / window.innerHeight) * 100
+            });
+        };
+
+        window.addEventListener('mousemove', handleMouseMove);
+        return () => window.removeEventListener('mousemove', handleMouseMove);
+    }, []);
+
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+    });
+
+    const handleInputChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleForSubimted = (e) => {
+        e.preventDefault();
+
+        if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+            alert('Please fill all required fields.');
+            return;
+        }
+
+        emailjs.send(
+            'service_7qb9vsf',        // Service ID
+            'template_0cy7ra2',       // Template ID
+            formData,                 // Form data
+            'w8fwoqZKlq0TGX-T9'       // Public key / User ID
+        )
+            .then((result) => {
+                console.log('Email sent:', result.text);
+                alert('Message sent successfully!');
+                setFormData({ name: '', email: '', subject: '', message: '' }); // Reset form
+            })
+            .catch((error) => {
+                console.log('Email failed:', error.text);
+                alert('Failed to send message.');
+            });
+    };
+
+
     return (
         <div
             className="h-screen w-full overflow-y-scroll snap-y snap-mandatory scroll-smooth bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 text-white">
@@ -219,7 +337,6 @@ export default function PortfolioHomepage() {
             </nav>
 
             <br/><br/> <br/><br/>
-
             {/* Hero Section */}
             <section
                 id="home"
@@ -544,8 +661,10 @@ export default function PortfolioHomepage() {
                 </div>
             </section>
 
+
+            {/*projects section*/}
             <section id="projects"
-                     className="relative min-h-screen py-20 px-8 max-w-7xl mx-auto snap-start overflow-hidden">
+                     className="relative min-h-screen py-20 px-8 max-w-7xl mx-auto snap-start overflow-hidden mt-[-90px]">
                 {/* Right: Projects Showcase */}
                 <div className="space-y-8">
                     <div className="text-center mb-16" data-aos="fade-up">
@@ -582,7 +701,7 @@ export default function PortfolioHomepage() {
 
                     {/* Active Project Display */}
                     <div className="relative">
-                        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-3xl blur-xl" />
+                        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900/20 to-purple-900/20 rounded-3xl blur-xl" />
                         <div className="relative bg-slate-800/30 backdrop-blur-sm border border-slate-600/50 rounded-3xl overflow-hidden group hover:border-blue-400/50 transition-all duration-500">
                             {/* Project Image */}
                             <div className="relative h-90 bg-gradient-to-br from-slate-700 to-slate-800 overflow-hidden">
@@ -698,6 +817,457 @@ export default function PortfolioHomepage() {
                     </div>
                 </div>
             </section>
+
+
+            {/*services section*/}
+            <section
+                id="services"
+                className="relative min-h-screen flex flex-col items-center justify-center gap-16 px-8 py-20 max-w-7xl mx-auto snap-start overflow-hidden mt-[-90px]"
+            >
+                {/* Animated Background */}
+                <div className="absolute inset-0 -z-10">
+                    {/* Gradient Background */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900/20 to-purple-900/20"></div>
+
+                    {/* Floating Particles */}
+                    <div className="absolute inset-0">
+                        {[...Array(25)].map((_, i) => (
+                            <div
+                                key={i}
+                                className="absolute w-1 h-1 bg-blue-400/30 rounded-full animate-pulse"
+                                style={{
+                                    left: `${Math.random() * 100}%`,
+                                    top: `${Math.random() * 100}%`,
+                                    animationDelay: `${Math.random() * 3}s`,
+                                    animationDuration: `${2 + Math.random() * 2}s`
+                                }}
+                            ></div>
+                        ))}
+                    </div>
+
+                    {/* Geometric Shapes */}
+                    <div className="absolute top-32 left-16 w-24 h-24 border border-blue-500/20 rounded-full animate-spin" style={{animationDuration: '20s'}}></div>
+                    <div className="absolute bottom-32 right-16 w-32 h-32 border border-purple-500/20 rotate-45 animate-pulse"></div>
+                    <div className="absolute top-1/2 right-1/4 w-20 h-20 border border-cyan-500/20 rounded-lg animate-bounce" style={{animationDuration: '3s'}}></div>
+
+                    {/* Glowing Orbs */}
+                    <div className="absolute top-1/4 left-1/3 w-48 h-48 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
+                    <div className="absolute bottom-1/3 right-1/3 w-36 h-36 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-full blur-2xl animate-pulse" style={{animationDelay: '1s'}}></div>
+                </div>
+
+                {/* Header */}
+                <div className="text-center relative z-10 mb-8">
+                    <p className="text-blue-300 text-sm tracking-[0.3em] mb-4 font-light animate-fade-in-up">
+                        S E R V I C E S
+                    </p>
+                    <h2 className="text-4xl lg:text-6xl font-bold leading-tight">
+                        DESIGN{' '}
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 animate-pulse">
+                        SERVICES
+                    </span>{' '}
+                        I AM PROVIDING
+                    </h2>
+                </div>
+
+                {/* Services Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full relative z-10">
+                    {services.map((service, index) => (
+                        <div
+                            key={service.id}
+                            className="group relative bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-600/50 hover:border-blue-400/50 p-6 transition-all duration-500 hover:scale-105 hover:bg-slate-700/70"
+                            style={{
+                                animationDelay: `${index * 0.2}s`
+                            }}
+                        >
+                            {/* Glow Effect */}
+                            <div className={`absolute inset-0 bg-gradient-to-r ${service.color} opacity-0 group-hover:opacity-10 rounded-2xl blur-xl transition-all duration-500`}></div>
+
+                            {/* Animated Border */}
+                            <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${service.color} p-[1px] opacity-0 group-hover:opacity-100 transition-all duration-500`}>
+                                <div className="w-full h-full bg-slate-800 rounded-2xl"></div>
+                            </div>
+
+                            {/* Content */}
+                            <div className="relative z-10">
+                                {/* Icon */}
+                                <div className={`inline-flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-r ${service.color} mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                                    <div className="text-white">
+                                        {service.icon}
+                                    </div>
+                                </div>
+
+                                {/* Title */}
+                                <h3 className="text-xl font-bold text-white mb-4 group-hover:text-blue-300 transition-colors duration-300">
+                                    {service.title}
+                                </h3>
+
+                                {/* Description */}
+                                <p className="text-gray-400 text-sm leading-relaxed mb-6 group-hover:text-gray-300 transition-colors duration-300">
+                                    {service.description}
+                                </p>
+
+                                {/* Rating */}
+                                <div className="flex items-center gap-1">
+                                    {renderStars(service.rating)}
+                                </div>
+                            </div>
+
+                            {/* Floating Elements */}
+                            <div className="absolute top-4 right-4 w-2 h-2 bg-blue-400 rounded-full animate-ping opacity-0 group-hover:opacity-100"></div>
+                            <div className="absolute bottom-4 left-4 w-1 h-1 bg-purple-400 rounded-full animate-pulse opacity-0 group-hover:opacity-100"></div>
+                        </div>
+                    ))}
+                </div>
+
+                {/* Bottom Decorative Elements */}
+                <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex space-x-4 opacity-30">
+                    <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce"></div>
+                    <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
+                    <div className="w-2 h-2 bg-cyan-400 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                </div>
+            </section>
+
+
+            {/*contact section*/}
+            <section
+                id="contact"
+                className="relative min-h-screen flex flex-col lg:flex-row items-center justify-between gap-16 px-8 py-20 max-w-7xl mx-auto snap-start overflow-hidden"
+            >
+                {/* Animated Background */}
+                <div className="absolute inset-0 -z-10">
+                    {/* Gradient Background */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900/20 to-purple-900/20"></div>
+
+                    {/* Floating Particles */}
+                    <div className="absolute inset-0">
+                        {[...Array(25)].map((_, i) => (
+                            <div
+                                key={i}
+                                className="absolute w-1 h-1 bg-blue-400/30 rounded-full animate-pulse"
+                                style={{
+                                    left: `${Math.random() * 100}%`,
+                                    top: `${Math.random() * 100}%`,
+                                    animationDelay: `${Math.random() * 3}s`,
+                                    animationDuration: `${2 + Math.random() * 2}s`
+                                }}
+                            ></div>
+                        ))}
+                    </div>
+
+                    {/* Geometric Shapes */}
+                    <div className="absolute top-20 left-10 w-32 h-32 border border-blue-500/20 rounded-full animate-spin" style={{animationDuration: '20s'}}></div>
+                    <div className="absolute bottom-20 right-10 w-24 h-24 border border-purple-500/20 rotate-45 animate-pulse"></div>
+                    <div className="absolute top-1/2 left-1/4 w-16 h-16 border border-cyan-500/20 rounded-lg animate-bounce" style={{animationDuration: '3s'}}></div>
+
+                    {/* Glowing Orbs */}
+                    <div className="absolute top-1/4 right-1/4 w-40 h-40 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
+                    <div className="absolute bottom-1/4 left-1/4 w-32 h-32 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-full blur-2xl animate-pulse" style={{animationDelay: '1s'}}></div>
+                </div>
+
+                {/* Left Side - Profile and Contact Info */}
+                <div className="flex-1 flex flex-col items-center lg:items-start space-y-8 relative z-10">
+                    {/* Profile Image */}
+                    <div className="relative w-80 h-96 group">
+                        {/* Glow Effect Behind Image */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-3xl blur-xl transform scale-110 group-hover:scale-125 transition-transform duration-700"></div>
+
+                        {/* Main Image Container */}
+                        <div className="relative w-full h-full bg-gradient-to-br from-slate-700 via-slate-800 to-slate-900 rounded-3xl border border-slate-600/50 shadow-2xl overflow-hidden transform transition-all duration-500 hover:scale-105 hover:rotate-1 hover:shadow-blue-500/20">
+                            {/* Animated Border */}
+                            <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-500/50 via-purple-500/50 to-cyan-500/50 p-[2px] animate-pulse">
+                                <div className="w-full h-full bg-slate-800 rounded-3xl"></div>
+                            </div>
+
+                            {/* Placeholder for Profile Image */}
+                            <div className="relative z-10 w-full h-full flex items-center justify-center bg-gradient-to-br from-slate-700 to-slate-800 rounded-3xl">
+                                <div className="text-6xl text-blue-400 opacity-50">👤</div>
+                            </div>
+
+                            {/* Overlay Effects */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 via-transparent to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                            {/* Floating Elements */}
+                            <div className="absolute top-4 right-4 w-3 h-3 bg-blue-400 rounded-full animate-ping"></div>
+                            <div className="absolute bottom-4 left-4 w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
+                        </div>
+                    </div>
+
+                    {/* Contact Information */}
+                    <div className="space-y-6 w-full max-w-sm">
+                        {/* Email */}
+                        <div className="group">
+                            <p className="text-blue-300 text-sm tracking-[0.2em] mb-2 font-light">
+                                WRITE AN E-MAIL
+                            </p>
+                            <div className="flex items-center space-x-3 text-white text-lg font-medium group-hover:text-blue-300 transition-colors duration-300">
+                                <Mail className="w-5 h-5 text-blue-400" />
+                                <span>nethmidileksha6@gmail.com</span>
+                            </div>
+                        </div>
+
+                        {/* Phone */}
+                        <div className="group">
+                            <p className="text-blue-300 text-sm tracking-[0.2em] mb-2 font-light">
+                                MAKE A CALL
+                            </p>
+                            <div className="flex items-center space-x-3 text-white text-lg font-medium group-hover:text-blue-300 transition-colors duration-300">
+                                <Phone className="w-5 h-5 text-blue-400" />
+                                <span>+94 77 272 8738</span>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                {/* Right Side - Contact Form */}
+                <div className="flex-1 max-w-2xl w-full relative z-10">
+                    <div className="mb-12">
+                        <h2 className="text-4xl lg:text-5xl font-bold text-white leading-tight mb-4">
+                            Let's Discuss Your Project
+                        </h2>
+                        <p className="text-gray-300 text-lg leading-relaxed">
+                            Always available for freelancing if the right project comes along.
+                            Feel free to contact me.
+                        </p>
+                    </div>
+
+                    {/* Contact Form */}
+                    <div className="space-y-6">
+                        {/* Name and Email Row */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label className="text-blue-300 text-sm tracking-[0.1em] mb-2 block font-light">
+                                    YOUR NAME
+                                </label>
+                                <input
+                                    type="text"
+                                    name="name"
+                                    value={formData.name}
+                                    onChange={handleInputChange}
+                                    placeholder="Name *"
+                                    className="w-full bg-slate-800/50 backdrop-blur-sm border border-slate-600/50 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-blue-400/50 focus:bg-slate-700/70 transition-all duration-300"
+                                />
+                            </div>
+                            <div>
+                                <label className="text-blue-300 text-sm tracking-[0.1em] mb-2 block font-light">
+                                    YOUR EMAIL
+                                </label>
+                                <input
+                                    type="email"
+                                    name="email"
+                                    value={formData.email}
+                                    onChange={handleInputChange}
+                                    placeholder="Email *"
+                                    className="w-full bg-slate-800/50 backdrop-blur-sm border border-slate-600/50 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-blue-400/50 focus:bg-slate-700/70 transition-all duration-300"
+                                />
+                            </div>
+                        </div>
+
+                        {/* Subject */}
+                        <div>
+                            <label className="text-blue-300 text-sm tracking-[0.1em] mb-2 block font-light">
+                                SUBJECT
+                            </label>
+                            <input
+                                type="text"
+                                name="subject"
+                                value={formData.subject}
+                                onChange={handleInputChange}
+                                placeholder="Subject *"
+                                className="w-full bg-slate-800/50 backdrop-blur-sm border border-slate-600/50 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-blue-400/50 focus:bg-slate-700/70 transition-all duration-300"
+                            />
+                        </div>
+
+                        {/* Message */}
+                        <div>
+                            <label className="text-blue-300 text-sm tracking-[0.1em] mb-2 block font-light">
+                                YOUR MESSAGE
+                            </label>
+                            <textarea
+                                name="message"
+                                value={formData.message}
+                                onChange={handleInputChange}
+                                placeholder="Your message *"
+                                rows="6"
+                                className="w-full bg-slate-800/50 backdrop-blur-sm border border-slate-600/50 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-blue-400/50 focus:bg-slate-700/70 transition-all duration-300 resize-none"
+                            ></textarea>
+                        </div>
+
+                        {/* Submit Button */}
+                        <button
+                            onClick={handleForSubimted}
+                            className="group relative w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 px-8 py-4 rounded-full font-medium flex items-center justify-center space-x-3 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25 transform-gpu"
+                        >
+                            <span className="relative z-10">SEND MESSAGE</span>
+                            <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                            <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-300"></div>
+                        </button>
+                    </div>
+                </div>
+
+                {/* Bottom Decorative Dot */}
+                <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+                    <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce"></div>
+                </div>
+            </section>
+
+            {/*footer section*/}
+
+            <footer className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden snap-start h-110 ">
+                {/* Animated Background */}
+                <div className="absolute inset-0 -z-10">
+                    {/* Floating Particles */}
+                    <div className="absolute inset-0">
+                        {[...Array(15)].map((_, i) => (
+                            <div
+                                key={i}
+                                className="absolute w-1 h-1 bg-blue-400/20 rounded-full animate-pulse"
+                                style={{
+                                    left: `${Math.random() * 100}%`,
+                                    top: `${Math.random() * 100}%`,
+                                    animationDelay: `${Math.random() * 3}s`,
+                                    animationDuration: `${3 + Math.random() * 2}s`
+                                }}
+                            ></div>
+                        ))}
+                    </div>
+
+                    {/* Geometric Shapes */}
+                    <div className="absolute top-10 left-10 w-20 h-20 border border-blue-500/10 rounded-full animate-spin" style={{animationDuration: '30s'}}></div>
+                    <div className="absolute bottom-20 right-20 w-16 h-16 border border-purple-500/10 rotate-45 animate-pulse"></div>
+
+                    {/* Glowing Orbs */}
+                    <div className="absolute top-0 left-1/3 w-32 h-32 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-full blur-3xl"></div>
+                    <div className="absolute bottom-0 right-1/3 w-24 h-24 bg-gradient-to-r from-cyan-500/5 to-blue-500/5 rounded-full blur-2xl"></div>
+                </div>
+
+                {/* Main Footer Content */}
+                <div className="relative z-10 max-w-7xl mx-auto px-8 py-16">
+                    {/* Top Section */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                        {/* About Column */}
+                        <div className="space-y-6">
+                            <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
+                                Nethmi Dileksha
+                            </h3>
+                            <p className="text-gray-300 leading-relaxed">
+                                Full-stack developer passionate about creating innovative web solutions.
+                                Turning ideas into digital reality with modern technologies.
+                            </p>
+                            <div className="flex space-x-4">
+                                <a href="#" className="group relative w-10 h-10 bg-slate-700/50 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-all duration-300 hover:scale-110">
+                                    <Facebook className="w-5 h-5 text-gray-400 group-hover:text-white" />
+                                    <div className="absolute inset-0 bg-blue-400/20 rounded-lg opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-300"></div>
+                                </a>
+                                <a href="#" className="group relative w-10 h-10 bg-slate-700/50 rounded-lg flex items-center justify-center hover:bg-pink-600 transition-all duration-300 hover:scale-110">
+                                    <Instagram className="w-5 h-5 text-gray-400 group-hover:text-white" />
+                                    <div className="absolute inset-0 bg-pink-400/20 rounded-lg opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-300"></div>
+                                </a>
+                                <a href="#" className="group relative w-10 h-10 bg-slate-700/50 rounded-lg flex items-center justify-center hover:bg-blue-500 transition-all duration-300 hover:scale-110">
+                                    <Linkedin className="w-5 h-5 text-gray-400 group-hover:text-white" />
+                                    <div className="absolute inset-0 bg-blue-400/20 rounded-lg opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-300"></div>
+                                </a>
+                                <a href="#" className="group relative w-10 h-10 bg-slate-700/50 rounded-lg flex items-center justify-center hover:bg-gray-600 transition-all duration-300 hover:scale-110">
+                                    <Github className="w-5 h-5 text-gray-400 group-hover:text-white" />
+                                    <div className="absolute inset-0 bg-gray-400/20 rounded-lg opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-300"></div>
+                                </a>
+                            </div>
+                        </div>
+
+                        {/* Quick Links */}
+                        <div className="space-y-6">
+                            <h4 className="text-lg font-semibold text-white">Quick Links</h4>
+                            <ul className="space-y-3">
+                                {['About', 'Services', 'Projects', 'Contact', 'Blog'].map((link, index) => (
+                                    <li key={index}>
+                                        <a href={`#${link.toLowerCase()}`} className="text-gray-400 hover:text-blue-400 transition-colors duration-300 hover:translate-x-1 transform inline-block">
+                                            {link}
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+
+                        {/* Services */}
+                        <div className="space-y-6">
+                            <h4 className="text-lg font-semibold text-white">Services</h4>
+                            <ul className="space-y-3">
+                                {['Web Design', 'Web Development', 'Mobile Apps', 'SEO Marketing', 'Graphic Design'].map((service, index) => (
+                                    <li key={index}>
+                                        <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors duration-300 hover:translate-x-1 transform inline-block">
+                                            {service}
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+
+                        {/* Contact Info */}
+                        <div className="space-y-6">
+                            <h4 className="text-lg font-semibold text-white">Get In Touch</h4>
+                            <div className="space-y-4">
+                                <div className="flex items-start space-x-3 group">
+                                    <Mail className="w-5 h-5 text-blue-400 mt-1 group-hover:text-blue-300" />
+                                    <div>
+                                        <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
+                                            nethmidileksha6@gmail.com                                        </p>
+                                    </div>
+                                </div>
+                                <div className="flex items-start space-x-3 group">
+                                    <Phone className="w-5 h-5 text-purple-400 mt-1 group-hover:text-purple-300" />
+                                    <div>
+                                        <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
+                                            +94 77 272 8738
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="flex items-start space-x-3 group">
+                                    <MapPin className="w-5 h-5 text-cyan-400 mt-1 group-hover:text-cyan-300" />
+                                    <div>
+                                        <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
+                                            Colombo, Sri Lanka
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Divider */}
+                    <div className="relative mb-8">
+                        <div className="absolute inset-0 flex items-center">
+                            <div className="w-full border-t border-gradient-to-r from-transparent via-slate-600/50 to-transparent"></div>
+                        </div>
+                        <div className="relative flex justify-center">
+                            <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 px-6">
+                                <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Bottom Section */}
+                    <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+                        <div className="flex items-center space-x-2 text-gray-400">
+                            <span>Made with</span>
+                            <Heart className="w-4 h-4 text-red-500 animate-pulse" />
+                            <span>by Nethmi Dileksha © 2025. All rights reserved.</span>
+                        </div>
+
+                        {/* Back to Top Button */}
+                        <button
+                            onClick={scrollToHome}
+                            className="group relative bg-slate-700/50 backdrop-blur-sm border border-slate-600/50 hover:bg-slate-600/70 hover:border-blue-400/50 p-3 rounded-full transition-all duration-300 hover:scale-110"
+                        >
+                            <ArrowUp className="w-5 h-5 text-gray-400 group-hover:text-blue-400 group-hover:-translate-y-1 transition-all duration-300" />
+                            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </button>
+                    </div>
+                </div>
+
+                {/* Animated Bottom Border */}
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 opacity-50"></div>
+            </footer>
         </div>
     );
 }

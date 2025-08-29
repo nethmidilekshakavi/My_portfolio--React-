@@ -2,20 +2,22 @@
   "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" },
-
+    { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
     "target": "ESNext",
-    "module": "CommonJS",
+    "module": "ESNext",                       // Vite + React වලට ESNext
+    "lib": ["DOM", "DOM.Iterable", "ESNext"], // Browser + modern features
+    "jsx": "react-jsx",                       // 👈 React JSX support
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]
 }
-
-
-

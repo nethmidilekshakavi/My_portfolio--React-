@@ -1,42 +1,58 @@
 import {
-    Facebook,
-    Linkedin,
-    ArrowRight,
+
     Github,
     Download,
-    ArrowLeft,
-    Calendar,
+
     Tag,
     ExternalLink,
-    Star, Palette, Search, Code, Send, Instagram, Phone, Mail,
-    MapPin, Heart, ArrowUp, Youtube
+    Palette, Code, Send, Phone, Mail,
+    MapPin, Heart, ArrowUp, Menu, X
 } from 'lucide-react';
 
 import { FaFacebookF, FaGithub, FaLinkedinIn, FaYoutube } from 'react-icons/fa';
+
+// @ts-ignore
 import profile from '../images/proPic/Adobe Express - file.png';
+// @ts-ignore
 import java from '../images/language-logos/java.png'
+// @ts-ignore
 import react from '../images/language-logos/react.png'
+// @ts-ignore
 import mysql from '../images/language-logos/icons8-mysql-48.png'
+// @ts-ignore
 import mongodb from '../images/language-logos/icons8-mongo-db-48.png'
+// @ts-ignore
 import python from '../images/language-logos/icons8-python-48.png'
+// @ts-ignore
 import nodejs from '../images/language-logos/icons8-nodejs-48.png'
+// @ts-ignore
 import html from '../images/language-logos/icons8-html-48.png'
+// @ts-ignore
 import css from '../images/language-logos/icons8-css-48.png'
+// @ts-ignore
 import js from '../images/language-logos/icons8-js-48.png'
+// @ts-ignore
 import figma from '../images/language-logos/icons8-figma-48.png'
+// @ts-ignore
 import rtrasnspotSsystem from '../images/projects images/smart-tasnsport-system.png'
+// @ts-ignore
 import engishTeacher from '../images/projects images/engish-teacher.png'
+// @ts-ignore
 import jsp from '../images/projects images/jsp.png'
+// @ts-ignore
 import lib from '../images/projects images/lib.png'
+// @ts-ignore
 import dne from '../images/projects images/DNE.png'
+// @ts-ignore
 import proPic from '../images/proPic/WhatsApp Image 2025-07-28 at 08.22.24_2a126f02.jpg'
+// @ts-ignore
 import proPic2 from '../images/proPic/WhatsApp Image 2025-08-16 at 08.13.28_3136f8c6.jpg'
 import emailjs from 'emailjs-com';
 
 
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 
-export default function PortfolioHomepage() {
+export default function PortfolioHomepage():any {
 
     const skills = [
         {
@@ -101,7 +117,6 @@ export default function PortfolioHomepage() {
         }
     ];
 
-    const [activeProject, setActiveProject] = useState(0);
 
     const projects = [
         {
@@ -224,7 +239,7 @@ export default function PortfolioHomepage() {
         },
     ];
 
-    const renderStars = (rating) => {
+    const renderStars = (rating:number) => {
         const fullStars = Math.floor(rating);
         const hasHalfStar = rating % 1 !== 0;
         const stars = [];
@@ -257,7 +272,7 @@ export default function PortfolioHomepage() {
     useEffect(() => {
         setIsVisible(true);
 
-        const handleMouseMove = (e) => {
+        const handleMouseMove :any= (e: React.MouseEvent) => {
             setMousePosition({
                 x: (e.clientX / window.innerWidth) * 100,
                 y: (e.clientY / window.innerHeight) * 100
@@ -275,11 +290,11 @@ export default function PortfolioHomepage() {
         message: ''
     });
 
-    const handleInputChange = (e) => {
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>)  => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleForSubimted = (e) => {
+    const handleFormSubmitted = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>)  => {
         e.preventDefault();
 
         if (!formData.name || !formData.email || !formData.subject || !formData.message) {
@@ -310,79 +325,168 @@ export default function PortfolioHomepage() {
         setVisibleCount((prev) => Math.min(prev + 3, projects.length));
     };
 
+    // @ts-ignore
+    // @ts-ignore
+    // @ts-ignore
+    // @ts-ignore
+    // @ts-ignore
+    // @ts-ignore
+
+
+    const [isOpen, setIsOpen] = useState(false);
+
     return (
         <div
             className="h-screen w-full overflow-y-scroll snap-y snap-mandatory scroll-smooth bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 text-white">
 
             {/* Navigation */}
             <nav className="flex items-center justify-between px-8 py-6 fixed w-full bg-transparent z-10">
+                {/* Logo */}
                 <div className="flex items-center space-x-2">
                     <div className="w-8 h-8 bg-blue-500 rounded flex items-center justify-center font-bold text-white">
                         D
                     </div>
-                    <span className="text-xl font-bold">DILEKSHA</span>
+                    <span className="text-xl font-bold text-white">DILEKSHA</span>
                 </div>
 
+                {/* Desktop Links */}
                 <div className="hidden md:flex items-center space-x-8">
-                    <a href="#home" className="hover:text-blue-400 transition-colors border-b-2 border-blue-400 pb-1">HOME</a>
-                    <a href="#about" className="hover:text-blue-400 transition-colors">ABOUT ME</a>
-                    <a href="#skills" className="hover:text-blue-400 transition-colors">SKILLS</a>
-                    <a href="#projects" className="hover:text-blue-400 transition-colors">PROJECTS</a>
-                    <a href="#services" className="hover:text-blue-400 transition-colors">SERVICES</a>
-                    <a href="#contact" className="hover:text-blue-400 transition-colors">CONTACT</a>
+                    <a href="#home" className="text-white hover:text-blue-400 transition-colors border-b-2 border-blue-400 pb-1">HOME</a>
+                    <a href="#about" className="text-gray-300 hover:text-blue-400 transition-colors">ABOUT ME</a>
+                    <a href="#skills" className="text-gray-300 hover:text-blue-400 transition-colors">SKILLS</a>
+                    <a href="#projects" className="text-gray-300 hover:text-blue-400 transition-colors">PROJECTS</a>
+                    <a href="#services" className="text-gray-300 hover:text-blue-400 transition-colors">SERVICES</a>
+                    <a href="#contact" className="text-gray-300 hover:text-blue-400 transition-colors">CONTACT</a>
                 </div>
 
-                <button className="bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-full font-medium transition-colors">
-                    LETS' TALK
+                {/* Desktop Button */}
+                <button className="hidden md:block bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full font-medium transition-colors">
+                    LET'S TALK
                 </button>
+
+                {/* Mobile Menu Button */}
+                <div className="md:hidden">
+                    <button
+                        onClick={() => setIsOpen(!isOpen)}
+                        className="text-white p-2"
+                    >
+                        {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                    </button>
+                </div>
             </nav>
+
+            {/* Mobile Menu Overlay */}
+            {isOpen && (
+                <div className="fixed inset-0 z-40 md:hidden">
+                    <div className="fixed inset-0 bg-black/50" onClick={() => setIsOpen(false)}></div>
+                    <div className="fixed top-0 right-0 w-64 h-full bg-slate-900/95 backdrop-blur-lg shadow-xl">
+                        <div className="flex flex-col p-6 space-y-6 mt-20">
+                            <a
+                                href="#home"
+                                onClick={() => setIsOpen(false)}
+                                className="text-white hover:text-blue-400 transition-colors border-b border-blue-400/30 pb-3 text-lg font-medium"
+                            >
+                                HOME
+                            </a>
+                            <a
+                                href="#about"
+                                onClick={() => setIsOpen(false)}
+                                className="text-gray-300 hover:text-blue-400 transition-colors text-lg"
+                            >
+                                ABOUT ME
+                            </a>
+                            <a
+                                href="#skills"
+                                onClick={() => setIsOpen(false)}
+                                className="text-gray-300 hover:text-blue-400 transition-colors text-lg"
+                            >
+                                SKILLS
+                            </a>
+                            <a
+                                href="#projects"
+                                onClick={() => setIsOpen(false)}
+                                className="text-gray-300 hover:text-blue-400 transition-colors text-lg"
+                            >
+                                PROJECTS
+                            </a>
+                            <a
+                                href="#services"
+                                onClick={() => setIsOpen(false)}
+                                className="text-gray-300 hover:text-blue-400 transition-colors text-lg"
+                            >
+                                SERVICES
+                            </a>
+                            <a
+                                href="#contact"
+                                onClick={() => setIsOpen(false)}
+                                className="text-gray-300 hover:text-blue-400 transition-colors text-lg"
+                            >
+                                CONTACT
+                            </a>
+
+                            <button
+                                className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full font-medium transition-colors mt-6 w-full"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                LET'S TALK
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
 
             <br/><br/> <br/><br/>
             {/* Hero Section */}
             <section
                 id="home"
-                className="h-screen flex flex-col md:flex-row items-center justify-between px-8 py-12 max-w-7xl mx-auto relative snap-start"
+                className="min-h-screen flex flex-col md:flex-row items-center justify-between px-8 py-12 max-w-7xl mx-auto relative snap-start"
             >
                 {/* Left Content */}
-                <div className="flex-1 max-w-2xl mt-24 md:mt-0">
+                <div className="flex-1 max-w-2xl mt-12 md:mt-0 text-center md:text-left">
                     <div className="mb-8">
-                        <p className="text-blue-300 text-sm tracking-wider mb-4">D I L E K S H A  K A V I N D I</p>
-                        <h1 className="text-6xl md:text-7xl font-bold mb-6 leading-tight">
+                        <p className="text-blue-300 text-sm tracking-wider mb-4">
+                            D I L E K S H A  K A V I N D I
+                        </p>
+                        <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
                             HAY! I'M DILEKSHA
                         </h1>
-                        <h2 className="text-4xl md:text-5xl font-bold text-blue-400 mb-8">
-                            FULLSTACK DEVELOPER
+                        <h2 className="text-3xl md:text-5xl font-bold text-blue-400 mb-8">
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 animate-pulse">
+          FULLSTACK DEVELOPER
+        </span>
                         </h2>
                     </div>
 
-                    <p className="text-gray-300 text-lg leading-relaxed mb-8 max-w-lg">
+                    <p className="text-gray-300 text-lg leading-relaxed mb-8 max-w-lg mx-auto md:mx-0">
                         Passionate about creating innovative web solutions with modern technologies.
                         I build scalable applications that deliver exceptional user experiences and
                         robust backend functionality.
                     </p>
 
-                    <div className="flex items-center space-x-4">
-                        <div className="flex space-x-3">
-                            <a href="https://web.facebook.com/nethmi.kavindi.14289?_rdc=1&_rdr#" target="_blank" rel="noreferrer" className="w-12 h-12 bg-blue-600 hover:bg-blue-700 rounded-full flex items-center justify-center transition-colors">
-                                <FaFacebookF className="w-5 h-5 text-white" />
-                            </a>
-                            <a href="https://github.com/nethmidilekshakavi" target="_blank" rel="noreferrer" className="w-12 h-12 bg-gray-800 hover:bg-gray-900 rounded-full flex items-center justify-center transition-colors">
-                                <FaGithub className="w-5 h-5 text-white" />
-                            </a>
-                            <a href="https://www.linkedin.com/in/nethmi-dileksha-85b268319/" target="_blank" rel="noreferrer" className="w-12 h-12 bg-blue-700 hover:bg-blue-800 rounded-full flex items-center justify-center transition-colors">
-                                <FaLinkedinIn className="w-5 h-5 text-white" />
-                            </a>
-                            <a href="http://www.youtube.com/@nethmidileksha413" target="_blank" rel="noreferrer" className="w-12 h-12 bg-red-600 hover:bg-red-700 rounded-full flex items-center justify-center transition-colors">
-                                <FaYoutube className="w-5 h-5 text-white" />
-                            </a>
-                        </div>
-
+                    {/* Social Icons */}
+                    <div className="flex items-center justify-center md:justify-start space-x-3">
+                        <a href="https://web.facebook.com/nethmi.kavindi.14289?_rdc=1&_rdr#" target="_blank" rel="noreferrer"
+                           className="w-12 h-12 bg-blue-600 hover:bg-blue-700 rounded-full flex items-center justify-center transition-colors">
+                            <FaFacebookF className="w-5 h-5 text-white" />
+                        </a>
+                        <a href="https://github.com/nethmidilekshakavi" target="_blank" rel="noreferrer"
+                           className="w-12 h-12 bg-gray-800 hover:bg-gray-900 rounded-full flex items-center justify-center transition-colors">
+                            <FaGithub className="w-5 h-5 text-white" />
+                        </a>
+                        <a href="https://www.linkedin.com/in/nethmi-dileksha-85b268319/" target="_blank" rel="noreferrer"
+                           className="w-12 h-12 bg-blue-700 hover:bg-blue-800 rounded-full flex items-center justify-center transition-colors">
+                            <FaLinkedinIn className="w-5 h-5 text-white" />
+                        </a>
+                        <a href="http://www.youtube.com/@nethmidileksha413" target="_blank" rel="noreferrer"
+                           className="w-12 h-12 bg-red-600 hover:bg-red-700 rounded-full flex items-center justify-center transition-colors">
+                            <FaYoutube className="w-5 h-5 text-white" />
+                        </a>
                     </div>
                 </div>
 
                 {/* Right Content */}
-                <div className="flex-1 flex justify-center items-center relative mt-12 md:mt-0">
-                    <div className="w-[500px] h-[500px]  bg-gradient-to-br overflow-hidden rounded-2xl">
+                <div className="flex-1 flex justify-center items-center mt-12 md:mt-0">
+                    <div className="w-[300px] sm:w-[400px] md:w-[500px] aspect-square bg-gradient-to-br overflow-hidden rounded-2xl">
                         <img
                             src={profile}
                             alt="Profile"
@@ -390,133 +494,66 @@ export default function PortfolioHomepage() {
                         />
                     </div>
                 </div>
-
             </section>
 
-            {/*--------------------------------------------------------------------------------------------------------*/}
-            {/* About Section */}
-
+            {/* ABOUT SECTION */}
             <section
                 id="about"
-                className="relative h-screen flex flex-col lg:flex-row items-center justify-between gap-16 px-8 max-w-7xl mx-auto snap-start overflow-hidden"
+                className="relative min-h-screen flex flex-col lg:flex-row items-center justify-between gap-12 px-8 max-w-7xl mx-auto snap-start overflow-hidden py-12"
             >
-                {/* Animated Background */}
-                <div className="absolute inset-0 -z-10">
-                    {/* Gradient Background */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900/20 to-purple-900/20"></div>
-
-                    {/* Floating Particles */}
-                    <div className="absolute inset-0">
-                        {[...Array(20)].map((_, i) => (
-                            <div
-                                key={i}
-                                className={`absolute w-1 h-1 bg-blue-400/30 rounded-full animate-pulse`}
-                                style={{
-                                    left: `${Math.random() * 100}%`,
-                                    top: `${Math.random() * 100}%`,
-                                    animationDelay: `${Math.random() * 3}s`,
-                                    animationDuration: `${2 + Math.random() * 2}s`
-                                }}
-                            ></div>
-                        ))}
-                    </div>
-
-                    {/* Geometric Shapes */}
-                    <div className="absolute top-20 left-10 w-32 h-32 border border-blue-500/20 rounded-full animate-spin-slow"></div>
-                    <div className="absolute bottom-20 right-10 w-24 h-24 border border-purple-500/20 rotate-45 animate-pulse"></div>
-                    <div className="absolute top-1/2 left-1/4 w-16 h-16 border border-cyan-500/20 rounded-lg animate-bounce-slow"></div>
-
-                    {/* Glowing Orbs */}
-                    <div className="absolute top-1/4 right-1/4 w-40 h-40 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full blur-3xl animate-float"></div>
-                    <div className="absolute bottom-1/4 left-1/4 w-32 h-32 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-full blur-2xl animate-float-reverse"></div>
-                </div>
-
                 {/* Left Image */}
-                <div
-                    className="flex-1 flex justify-center mt-12 lg:mt-0 relative z-10"
-                    data-aos="fade-right"
-                    data-aos-duration="1200"
-                >
-                    <div className="relative w-96 h-[500px] group">
-                        {/* Glow Effect Behind Image */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-3xl blur-xl transform scale-110 group-hover:scale-125 transition-transform duration-700"></div>
-
-                        {/* Main Image Container */}
-                        <div className="relative w-full h-full bg-gradient-to-br from-slate-700 via-slate-800 to-slate-900 rounded-3xl border border-slate-600/50 shadow-2xl overflow-hidden transform transition-all duration-500 hover:scale-105 hover:rotate-1 hover:shadow-blue-500/20">
-                            {/* Animated Border */}
-                            <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-500/50 via-purple-500/50 to-cyan-500/50 p-[2px] animate-gradient-border">
-                                <div className="w-full h-full bg-slate-800 rounded-3xl"></div>
-                            </div>
-
-                            {/* Profile Image */}
+                <div className="flex-1 flex justify-center relative z-10">
+                    <div className="relative w-72 sm:w-80 md:w-96 h-[400px] sm:h-[450px] md:h-[500px] group">
+                        {/* Glow */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-3xl blur-xl scale-110 group-hover:scale-125 transition-transform duration-700"></div>
+                        {/* Image */}
+                        <div className="relative w-full h-full bg-gradient-to-br from-slate-700 via-slate-800 to-slate-900 rounded-3xl border border-slate-600/50 shadow-2xl overflow-hidden transform transition-all duration-500 hover:scale-105">
                             <img
                                 src={proPic}
                                 alt="About Profile"
-                                className="relative z-10 w-full h-full object-cover rounded-3xl"
+                                className="w-full h-full object-cover rounded-3xl"
                             />
-
-                            {/* Overlay Effects */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 via-transparent to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-                            {/* Floating Elements */}
-                            <div className="absolute top-4 right-4 w-3 h-3 bg-blue-400 rounded-full animate-ping"></div>
-                            <div className="absolute bottom-4 left-4 w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
                         </div>
                     </div>
                 </div>
 
                 {/* Right Content */}
-                <div
-                    className="flex-1 max-w-2xl mt-12 lg:mt-0 relative z-10"
-                    data-aos="fade-left"
-                    data-aos-duration="1200"
-                >
-                    <p className="text-blue-300 text-sm tracking-[0.3em] mb-4 font-light animate-fade-in-up">
-                        A B O U T  M E
+                <div className="flex-1 max-w-2xl text-center lg:text-left relative z-10">
+                    <p className="text-blue-300 text-sm tracking-[0.3em] mb-4 font-light">
+                        A B O U T M E
                     </p>
-
-                    <h2 className="text-4xl lg:text-5xl font-bold mb-8 leading-tight animate-fade-in-up" style={{animationDelay: '0.2s'}}>
-                        I AM AVAILABLE FOR{' '}
-                        <span className="relative inline-block">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 animate-gradient-text">
-                    FULL STACK DEVELOPMENT
-                </span>
-                <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700"></div>
-            </span>{' '}
+                    <h2 className="text-3xl md:text-5xl font-bold mb-8 leading-tight">
+                        I AM AVAILABLE FOR{" "}
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400">
+        FULL STACK DEVELOPMENT
+      </span>{" "}
                         PROJECTS
                     </h2>
 
-                    {/* Content Cards */}
                     <div className="space-y-6 mb-8">
-                        <div className="p-6 rounded-2xl hover:bg-slate-800/70 transition-all duration-300 hover:transform hover:translateX-2">
-                            <p className="text-gray-300 text-lg leading-relaxed">
-                                My name is <span className="text-blue-400 font-semibold">Nethmi Dileksha Kavindi</span>, full-stack developer from Sri Lanka, studying Software Engineering at IJSE.
-                            </p>
-                            <br/>
-                            <p className="text-gray-300 text-lg leading-relaxed">
-                                At IJSE, I gained a strong foundation in software engineering and programming.
-                                I developed web applications, including a site for a local business that improved their online presence and sales,
-                                teaching me the value of teamwork, communication, and attention to detail.
-                            </p>
-                        </div>
+                        <p className="text-gray-300 text-lg leading-relaxed">
+                            My name is <span className="text-blue-400 font-semibold">Nethmi Dileksha Kavindi</span>,
+                            full-stack developer from Sri Lanka, studying Software Engineering at IJSE.
+                        </p>
+                        <p className="text-gray-300 text-lg leading-relaxed">
+                            At IJSE, I gained a strong foundation in software engineering and programming.
+                            I developed web applications, including a site for a local business that improved their online presence and sales.
+                        </p>
                     </div>
 
-                    {/* Buttons */}
-                    <div className="flex flex-col sm:flex-row gap-4">
-
-                        <a href="../pdf/Dileksha_Kavindi_Professional_CV.pdf" download="Dileksha_Kavindi_Professional_CV.pdf">
-                            <button className="group relative bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 px-8 py-4 rounded-full font-medium flex items-center justify-center space-x-3 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25 transform-gpu">
-                               <Download className="w-5 h-5 group-hover:-translate-y-1 transition-transform duration-300" />
-                                <span>DOWNLOAD CV</span>
-                                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                            </button>
-                        </a>
-
-
-                    </div>
+                    <a
+                        href="../pdf/Dileksha_Kavindi_Professional_CV.pdf"
+                        download="Dileksha_Kavindi_Professional_CV.pdf"
+                        className="inline-block"
+                    >
+                        <button className="group relative bg-gradient-to-r from-blue-500 to-purple-600 px-8 py-4 rounded-full font-medium flex items-center justify-center gap-3 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25">
+                            <Download className="w-5 h-5 group-hover:-translate-y-1 transition-transform duration-300" />
+                            <span>DOWNLOAD CV</span>
+                        </button>
+                    </a>
                 </div>
-
             </section>
+
 
             {/*my skills*/}
             <section
@@ -652,21 +689,22 @@ export default function PortfolioHomepage() {
             className="relative py-20 px-8 max-w-7xl mx-auto mt-[-90px]"
             >
         {/* Section Header */}
-            <div className="text-center mb-16">
-                <p className="text-blue-300 text-sm tracking-[0.3em] mb-4 font-light">
-                    M Y  P R O J E C T S
-                </p>
-                <h2 className="text-4xl lg:text-5xl font-bold mb-8 leading-tight">
-          <span className="bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 animate-gradient-text">
-            TECHNICAL EXPERTISE
-          </span>
-                </h2>
-                <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
-                    Crafting digital solutions with modern technologies and creative problem-solving
-                </p>
-            </div>
+                <div className="text-center mb-16">
+                    <p className="text-blue-300 text-sm tracking-[0.3em] mb-4 font-light">
+                        M Y  P R O J E C T S
+                    </p>
+                    <h2 className="text-4xl lg:text-5xl font-bold mb-8 leading-tight">
+    <span className="bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 animate-gradient-text">
+      FEATURED WORK
+    </span>
+                    </h2>
+                    <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
+                        A showcase of innovative projects built with modern web technologies,
+                        blending functionality, performance, and design to deliver real-world impact.
+                    </p>
+                </div>
 
-            {/* Projects Grid */}
+                {/* Projects Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 snap-start">
                 {projects.slice(0, visibleCount).map((project) => (
                     <div
@@ -887,7 +925,6 @@ export default function PortfolioHomepage() {
                 <div className="absolute inset-0 -z-10">
                     {/* Gradient Background */}
                     <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900/20 to-purple-900/20"></div>
-
                     {/* Floating Particles */}
                     <div className="absolute inset-0">
                         {[...Array(25)].map((_, i) => (
@@ -977,7 +1014,10 @@ export default function PortfolioHomepage() {
                 <div className="flex-1 max-w-2xl w-full relative z-10">
                     <div className="mb-12">
                         <h2 className="text-4xl lg:text-5xl font-bold text-white leading-tight mb-4">
-                            Let's Discuss Your Project
+                            Let's {' '}
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 animate-pulse">
+                          Discuss
+                    </span>{' '} Your Project
                         </h2>
                         <p className="text-gray-300 text-lg leading-relaxed">
                             Always available for freelancing if the right project comes along.
@@ -996,8 +1036,8 @@ export default function PortfolioHomepage() {
                                 <input
                                     type="text"
                                     name="name"
-                                    value={formData.name}
                                     onChange={handleInputChange}
+                                    value={formData.name}
                                     placeholder="Name *"
                                     className="w-full bg-slate-800/50 backdrop-blur-sm border border-slate-600/50 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-blue-400/50 focus:bg-slate-700/70 transition-all duration-300"
                                 />
@@ -1042,14 +1082,14 @@ export default function PortfolioHomepage() {
                                 value={formData.message}
                                 onChange={handleInputChange}
                                 placeholder="Your message *"
-                                rows="6"
+                                rows={6}
                                 className="w-full bg-slate-800/50 backdrop-blur-sm border border-slate-600/50 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-blue-400/50 focus:bg-slate-700/70 transition-all duration-300 resize-none"
                             ></textarea>
                         </div>
 
                         {/* Submit Button */}
                         <button
-                            onClick={handleForSubimted}
+                            onClick={handleFormSubmitted}
                             className="group relative w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 px-8 py-4 rounded-full font-medium flex items-center justify-center space-x-3 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25 transform-gpu"
                         >
                             <span className="relative z-10">SEND MESSAGE</span>
@@ -1066,8 +1106,7 @@ export default function PortfolioHomepage() {
             </section>
 
             {/*footer section*/}
-
-            <footer className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden snap-start h-110 ">
+            <footer className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden snap-start">
                 {/* Animated Background */}
                 <div className="absolute inset-0 -z-10">
                     {/* Floating Particles */}
@@ -1080,14 +1119,17 @@ export default function PortfolioHomepage() {
                                     left: `${Math.random() * 100}%`,
                                     top: `${Math.random() * 100}%`,
                                     animationDelay: `${Math.random() * 3}s`,
-                                    animationDuration: `${3 + Math.random() * 2}s`
+                                    animationDuration: `${3 + Math.random() * 2}s`,
                                 }}
                             ></div>
                         ))}
                     </div>
 
                     {/* Geometric Shapes */}
-                    <div className="absolute top-10 left-10 w-20 h-20 border border-blue-500/10 rounded-full animate-spin" style={{animationDuration: '30s'}}></div>
+                    <div
+                        className="absolute top-10 left-10 w-20 h-20 border border-blue-500/10 rounded-full animate-spin"
+                        style={{ animationDuration: "30s" }}
+                    ></div>
                     <div className="absolute bottom-20 right-20 w-16 h-16 border border-purple-500/10 rotate-45 animate-pulse"></div>
 
                     {/* Glowing Orbs */}
@@ -1096,55 +1138,89 @@ export default function PortfolioHomepage() {
                 </div>
 
                 {/* Main Footer Content */}
-                <div className="relative z-10 max-w-7xl mx-auto px-8 py-16">
+                <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 py-12 sm:py-16">
                     {/* Top Section */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 mb-12">
                         {/* About Column */}
-                        <div className="space-y-6">
+                        <div className="space-y-6 text-center sm:text-left">
                             <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
                                 Nethmi Dileksha
                             </h3>
-                            <p className="text-gray-300 leading-relaxed">
+                            <p className="text-gray-300 leading-relaxed text-sm sm:text-base">
                                 Full-stack developer passionate about creating innovative web solutions.
                                 Turning ideas into digital reality with modern technologies.
                             </p>
-                            <div className="flex space-x-4">
-                                    <a href="https://web.facebook.com/nethmi.kavindi.14289?_rdc=1&_rdr#" target="_blank" rel="noreferrer" className="w-12 h-12 bg-blue-600 hover:bg-blue-700 rounded-full flex items-center justify-center transition-colors">
-                                        <FaFacebookF className="w-5 h-5 text-white" />
-                                    </a>
-                                    <a href="https://github.com/nethmidilekshakavi" target="_blank" rel="noreferrer" className="w-12 h-12 bg-gray-800 hover:bg-gray-900 rounded-full flex items-center justify-center transition-colors">
-                                        <FaGithub className="w-5 h-5 text-white" />
-                                    </a>
-                                    <a href="https://www.linkedin.com/in/nethmi-dileksha-85b268319/" target="_blank" rel="noreferrer" className="w-12 h-12 bg-blue-700 hover:bg-blue-800 rounded-full flex items-center justify-center transition-colors">
-                                        <FaLinkedinIn className="w-5 h-5 text-white" />
-                                    </a>
-                                    <a href="http://www.youtube.com/@nethmidileksha413" target="_blank" rel="noreferrer" className="w-12 h-12 bg-red-600 hover:bg-red-700 rounded-full flex items-center justify-center transition-colors">
-                                        <FaYoutube className="w-5 h-5 text-white" />
-                                    </a>
+                            <div className="flex justify-center sm:justify-start space-x-3 sm:space-x-4">
+                                <a
+                                    href="https://web.facebook.com/nethmi.kavindi.14289?_rdc=1&_rdr#"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-600 hover:bg-blue-700 rounded-full flex items-center justify-center transition-colors"
+                                >
+                                    <FaFacebookF className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                                </a>
+                                <a
+                                    href="https://github.com/nethmidilekshakavi"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-800 hover:bg-gray-900 rounded-full flex items-center justify-center transition-colors"
+                                >
+                                    <FaGithub className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                                </a>
+                                <a
+                                    href="https://www.linkedin.com/in/nethmi-dileksha-85b268319/"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-700 hover:bg-blue-800 rounded-full flex items-center justify-center transition-colors"
+                                >
+                                    <FaLinkedinIn className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                                </a>
+                                <a
+                                    href="http://www.youtube.com/@nethmidileksha413"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="w-10 h-10 sm:w-12 sm:h-12 bg-red-600 hover:bg-red-700 rounded-full flex items-center justify-center transition-colors"
+                                >
+                                    <FaYoutube className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                                </a>
                             </div>
                         </div>
 
                         {/* Quick Links */}
-                        <div className="space-y-6">
+                        <div className="space-y-6 text-center sm:text-left">
                             <h4 className="text-lg font-semibold text-white">Quick Links</h4>
-                            <ul className="space-y-3">
-                                {['About', 'Services', 'Projects', 'Contact', 'Blog'].map((link, index) => (
-                                    <li key={index}>
-                                        <a href={`#${link.toLowerCase()}`} className="text-gray-400 hover:text-blue-400 transition-colors duration-300 hover:translate-x-1 transform inline-block">
-                                            {link}
-                                        </a>
-                                    </li>
-                                ))}
+                            <ul className="space-y-3 text-sm sm:text-base">
+                                {["About", "Services", "Projects", "Contact", "Blog"].map(
+                                    (link, index) => (
+                                        <li key={index}>
+                                            <a
+                                                href={`#${link.toLowerCase()}`}
+                                                className="text-gray-400 hover:text-blue-400 transition-colors duration-300 hover:translate-x-1 transform inline-block"
+                                            >
+                                                {link}
+                                            </a>
+                                        </li>
+                                    )
+                                )}
                             </ul>
                         </div>
 
                         {/* Services */}
-                        <div className="space-y-6">
+                        <div className="space-y-6 text-center sm:text-left">
                             <h4 className="text-lg font-semibold text-white">Services</h4>
-                            <ul className="space-y-3">
-                                {['Web Design', 'Web Development', 'Mobile Apps', 'SEO Marketing', 'Graphic Design'].map((service, index) => (
+                            <ul className="space-y-3 text-sm sm:text-base">
+                                {[
+                                    "Web Design",
+                                    "Web Development",
+                                    "Mobile Apps",
+                                    "SEO Marketing",
+                                    "Graphic Design",
+                                ].map((service, index) => (
                                     <li key={index}>
-                                        <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors duration-300 hover:translate-x-1 transform inline-block">
+                                        <a
+                                            href="#"
+                                            className="text-gray-400 hover:text-purple-400 transition-colors duration-300 hover:translate-x-1 transform inline-block"
+                                        >
                                             {service}
                                         </a>
                                     </li>
@@ -1153,31 +1229,26 @@ export default function PortfolioHomepage() {
                         </div>
 
                         {/* Contact Info */}
-                        <div className="space-y-6">
+                        <div className="space-y-6 text-center sm:text-left">
                             <h4 className="text-lg font-semibold text-white">Get In Touch</h4>
-                            <div className="space-y-4">
-                                <div className="flex items-start space-x-3 group">
-                                    <Mail className="w-5 h-5 text-blue-400 mt-1 group-hover:text-blue-300" />
-                                    <div>
-                                        <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
-                                            nethmidileksha6@gmail.com                                        </p>
-                                    </div>
+                            <div className="space-y-4 text-sm sm:text-base">
+                                <div className="flex justify-center sm:justify-start items-start space-x-3 group">
+                                    <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400 mt-1 group-hover:text-blue-300" />
+                                    <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
+                                        nethmidileksha6@gmail.com
+                                    </p>
                                 </div>
-                                <div className="flex items-start space-x-3 group">
-                                    <Phone className="w-5 h-5 text-purple-400 mt-1 group-hover:text-purple-300" />
-                                    <div>
-                                        <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
-                                            +94 77 272 8738
-                                        </p>
-                                    </div>
+                                <div className="flex justify-center sm:justify-start items-start space-x-3 group">
+                                    <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-purple-400 mt-1 group-hover:text-purple-300" />
+                                    <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
+                                        +94 77 272 8738
+                                    </p>
                                 </div>
-                                <div className="flex items-start space-x-3 group">
-                                    <MapPin className="w-5 h-5 text-cyan-400 mt-1 group-hover:text-cyan-300" />
-                                    <div>
-                                        <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
-                                            Colombo, Sri Lanka
-                                        </p>
-                                    </div>
+                                <div className="flex justify-center sm:justify-start items-start space-x-3 group">
+                                    <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400 mt-1 group-hover:text-cyan-300" />
+                                    <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
+                                        Colombo, Sri Lanka
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -1186,7 +1257,7 @@ export default function PortfolioHomepage() {
                     {/* Divider */}
                     <div className="relative mb-8">
                         <div className="absolute inset-0 flex items-center">
-                            <div className="w-full border-t border-gradient-to-r from-transparent via-slate-600/50 to-transparent"></div>
+                            <div className="w-full border-t border-slate-600/50"></div>
                         </div>
                         <div className="relative flex justify-center">
                             <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 px-6">
@@ -1196,8 +1267,8 @@ export default function PortfolioHomepage() {
                     </div>
 
                     {/* Bottom Section */}
-                    <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
-                        <div className="flex items-center space-x-2 text-gray-400">
+                    <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+                        <div className="flex flex-wrap items-center justify-center md:justify-start space-x-2 text-gray-400 text-sm sm:text-base">
                             <span>Made with</span>
                             <Heart className="w-4 h-4 text-red-500 animate-pulse" />
                             <span>by Nethmi Dileksha © 2025. All rights reserved.</span>
@@ -1217,6 +1288,7 @@ export default function PortfolioHomepage() {
                 {/* Animated Bottom Border */}
                 <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 opacity-50"></div>
             </footer>
+
         </div>
     );
 }

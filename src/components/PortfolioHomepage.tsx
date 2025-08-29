@@ -266,8 +266,8 @@ export default function PortfolioHomepage():any {
         }
     };
 
-    const [isVisible, setIsVisible] = useState(false);
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const [, setIsVisible] = useState(false);
+    const [, setMousePosition] = useState({ x: 0, y: 0 });
 
     useEffect(() => {
         setIsVisible(true);
@@ -294,7 +294,7 @@ export default function PortfolioHomepage():any {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleFormSubmitted = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>)  => {
+    const handleFormSubmitted = (e: React.MouseEvent<HTMLButtonElement>)  => {
         e.preventDefault();
 
         if (!formData.name || !formData.email || !formData.subject || !formData.message) {
@@ -325,16 +325,12 @@ export default function PortfolioHomepage():any {
         setVisibleCount((prev) => Math.min(prev + 3, projects.length));
     };
 
-    // @ts-ignore
-    // @ts-ignore
-    // @ts-ignore
-    // @ts-ignore
-    // @ts-ignore
-    // @ts-ignore
 
 
     const [isOpen, setIsOpen] = useState(false);
 
+    // @ts-ignore
+    // @ts-ignore
     return (
         <div
             className="h-screen w-full overflow-y-scroll snap-y snap-mandatory scroll-smooth bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 text-white">
@@ -441,6 +437,7 @@ export default function PortfolioHomepage():any {
                 id="home"
                 className="min-h-screen flex flex-col md:flex-row items-center justify-between px-8 py-12 max-w-7xl mx-auto relative snap-start"
             >
+
                 {/* Left Content */}
                 <div className="flex-1 max-w-2xl mt-12 md:mt-0 text-center md:text-left">
                     <div className="mb-8">

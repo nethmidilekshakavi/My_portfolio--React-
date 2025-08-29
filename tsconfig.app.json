@@ -12,7 +12,7 @@
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
     "moduleDetection": "force",
-    "noEmit": true,
+    "noEmit": false,                // ✅ allow emitting (Netlify needs this)
     "jsx": "react-jsx",
 
     /* Linting */
@@ -21,9 +21,15 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-   // "noUncheckedSideEffectImports": true,
-   // "allowSyntheticDefaultImports": true
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+
+    /* Required for project references */
+    "composite": true               // ✅ moved into same block
   },
-  "include": ["src"]
+
+  "include": ["src"],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
 }

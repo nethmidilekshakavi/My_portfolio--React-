@@ -495,14 +495,15 @@ export default function PortfolioHomepage():any {
 
             {/* ABOUT SECTION */}
             <section
-                id="about"
-                className="relative min-h-screen flex flex-col lg:flex-row items-center justify-between gap-12 px-8 max-w-7xl mx-auto snap-start overflow-hidden py-12"
-            >
+                    id="about"
+                    className="relative min-h-screen flex flex-col lg:flex-row items-center justify-between gap-12 px-8 max-w-7xl mx-auto snap-start overflow-hidden py-12 pt-32"
+                    >
                 {/* Left Image */}
-                <div className="flex-1 flex justify-center relative z-10">
+                <div className="flex-1 flex justify-center relative">
                     <div className="relative w-72 sm:w-80 md:w-96 h-[400px] sm:h-[450px] md:h-[500px] group">
                         {/* Glow */}
                         <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-3xl blur-xl scale-110 group-hover:scale-125 transition-transform duration-700"></div>
+
                         {/* Image */}
                         <div className="relative w-full h-full bg-gradient-to-br from-slate-700 via-slate-800 to-slate-900 rounded-3xl border border-slate-600/50 shadow-2xl overflow-hidden transform transition-all duration-500 hover:scale-105">
                             <img
@@ -513,6 +514,7 @@ export default function PortfolioHomepage():any {
                         </div>
                     </div>
                 </div>
+
 
                 {/* Right Content */}
                 <div className="flex-1 max-w-2xl text-center lg:text-left relative z-10">

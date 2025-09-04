@@ -546,7 +546,7 @@ export default function PortfolioHomepage():any {
 
                     <a
                         href="../pdf/Dileksha_Kavindi_CV.pdf"
-                        download="Dileksha_Kavindi_Professional_CV.pdf"
+                        download="Dileksha_Kavindi_CV.pdf"
                         className="inline-block"
                     >
                         <button className="group relative bg-gradient-to-r from-blue-500 to-purple-600 px-8 py-4 rounded-full font-medium flex items-center justify-center gap-3 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25">

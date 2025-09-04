@@ -547,7 +547,7 @@ export default function PortfolioHomepage():any {
                     </div>
 
                     <a
-                        href="../my-Cv/Dileksha_Kavindi_MyCV.pdf"
+                        href="../../my-Cv/Dileksha_Kavindi_MyCV.pdf"
                         download="Dileksha_Kavindi_MyCV.pdf"
                         className="inline-block"
                     >

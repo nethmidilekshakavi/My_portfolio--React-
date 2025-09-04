@@ -203,6 +203,7 @@ export default function PortfolioHomepage():any {
                 "Optimized for desktop and mobile devices"
             ]
         },
+
     ];
 
     const services = [
@@ -329,6 +330,7 @@ export default function PortfolioHomepage():any {
 
 
     const [isOpen, setIsOpen] = useState(false);
+
 
     // @ts-ignore
     // @ts-ignore
@@ -506,13 +508,14 @@ export default function PortfolioHomepage():any {
                         <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-3xl blur-xl scale-110 group-hover:scale-125 transition-transform duration-700"></div>
 
                         {/* Image */}
-                        <div className="relative w-full h-full bg-gradient-to-br from-slate-700 via-slate-800 to-slate-900 rounded-3xl border border-slate-600/50 shadow-2xl overflow-hidden transform transition-all duration-500 hover:scale-105">
+                        <div className="relative w-full h-full bg-gradient-to-br from-slate-700 via-slate-800 to-slate-900 rounded-3xl border border-slate-600/50 shadow-2xl overflow-hidden transform transition-all duration-500 hover:scale-105 brightness-90">
                             <img
                                 src={proPic2}
                                 alt="About Profile"
                                 className="w-full h-full object-cover rounded-3xl"
                             />
                         </div>
+
                     </div>
                 </div>
 
@@ -542,7 +545,7 @@ export default function PortfolioHomepage():any {
                     </div>
 
                     <a
-                        href="../pdf/Dileksha_Kavindi_Professional_CV.pdf"
+                        href="../pdf/Dileksha_Kavindi_CV.pdf"
                         download="Dileksha_Kavindi_Professional_CV.pdf"
                         className="inline-block"
                     >

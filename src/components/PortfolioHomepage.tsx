@@ -47,6 +47,8 @@ import dne from '../images/projects images/DNE.png'
 import proPic from '../images/proPic/WhatsApp Image 2025-07-28 at 08.22.24_2a126f02.jpg'
 // @ts-ignore
 import proPic2 from '../images/proPic/WhatsApp Image 2025-08-16 at 08.13.28_3136f8c6.jpg'
+import proPic3 from '../images/proPic/propic3.jpg'
+
 
 import emailjs from 'emailjs-com';
 
@@ -488,7 +490,7 @@ export default function PortfolioHomepage():any {
                 <div className="flex-1 flex justify-center items-center mt-12 md:mt-0">
                     <div className="w-[300px] sm:w-[400px] md:w-[500px] aspect-square bg-gradient-to-br overflow-hidden rounded-2xl">
                         <img
-                            src={profile}
+                            src={proPic3}
                             alt="Profile"
                             className="w-full h-full object-cover rounded-2xl"
                         />

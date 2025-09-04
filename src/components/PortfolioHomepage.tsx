@@ -47,7 +47,7 @@ import dne from '../images/projects images/DNE.png'
 import proPic from '../images/proPic/WhatsApp Image 2025-07-28 at 08.22.24_2a126f02.jpg'
 // @ts-ignore
 import proPic2 from '../images/proPic/WhatsApp Image 2025-08-16 at 08.13.28_3136f8c6.jpg'
-import proPic3 from '../images/proPic/propic3.jpg'
+import proPic3 from '../images/proPic/innovesta.jpg'
 
 
 import emailjs from 'emailjs-com';
@@ -490,7 +490,7 @@ export default function PortfolioHomepage():any {
                 <div className="flex-1 flex justify-center items-center mt-12 md:mt-0">
                     <div className="w-[300px] sm:w-[400px] md:w-[500px] aspect-square bg-gradient-to-br overflow-hidden rounded-2xl">
                         <img
-                            src={proPic3}
+                            src={profile}
                             alt="Profile"
                             className="w-full h-full object-cover rounded-2xl"
                         />
@@ -972,7 +972,7 @@ export default function PortfolioHomepage():any {
 
                             <div className="relative z-10 w-full h-full flex items-center justify-center bg-gradient-to-br from-slate-700 to-slate-800 rounded-3xl overflow-hidden">
                                 <img
-                                    src={proPic2} // proPic should be a URL or imported image
+                                    src={proPic3} // proPic should be a URL or imported image
                                     alt="Profile"
                                     className="w-full h-full object-cover opacity-60"
                                 />

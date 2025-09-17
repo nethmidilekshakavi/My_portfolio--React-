@@ -232,7 +232,7 @@ export default function PortfolioHomepage():any {
             technologies: ["React Native", "JavaScript", "Firebase", "Expo", "REST API"],
             category: "Full Stack",
             status: "Completed",
-            githubUrl: "https://github.com/yourusername/tastelanka-app", // replace with actual repo if available
+            githubUrl: "https://github.com/nethmidilekshakavi/Tastelanka-MobileApp.git",
             highlights: [
                 "Cross-platform mobile app (iOS & Android)",
                 "Recipe browsing, search, and favorites functionality",

@@ -160,9 +160,9 @@ export default function PortfolioHomepage():any {
                 "Developed a mobile application for a Sri Lankan recipe platform using React Native. Implemented features for browsing recipes, adding favorites, and managing user profiles. Contributed to building an interactive and responsive UI optimized for both Android and iOS devices.",
             image: tasteLankaImage,
             technologies: ["React Native", "JavaScript", "Firebase", "Expo", "REST API"],
-            category: "UI UX",
+            category: "Full Stack",
             status: "Completed",
-            githubUrl: "https://github.com/yourusername/tastelanka-app", // replace with actual repo if available
+            githubUrl: "https://github.com/nethmidilekshakavi/Tastelanka-MobileApp.git",
             highlights: [
                 "Cross-platform mobile app (iOS & Android)",
                 "Recipe browsing, search, and favorites functionality",
@@ -223,23 +223,7 @@ export default function PortfolioHomepage():any {
                 "Optimized for desktop and mobile devices"
             ]
         },
-        {
-            id: 7,
-            title: "TasteLanka Mobile App (Freelance)",
-            description:
-                "Developed a mobile application for a Sri Lankan recipe platform using React Native. Implemented features for browsing recipes, adding favorites, and managing user profiles. Contributed to building an interactive and responsive UI optimized for both Android and iOS devices.",
-            image: tasteLankaImage,
-            technologies: ["React Native", "JavaScript", "Firebase", "Expo", "REST API"],
-            category: "Full Stack",
-            status: "Completed",
-            githubUrl: "https://github.com/nethmidilekshakavi/Tastelanka-MobileApp.git",
-            highlights: [
-                "Cross-platform mobile app (iOS & Android)",
-                "Recipe browsing, search, and favorites functionality",
-                "Interactive and user-friendly UI design",
-                "Integration with Firebase for real-time data storage"
-            ]
-        }
+
 
 
     ];

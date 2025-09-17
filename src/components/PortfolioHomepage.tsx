@@ -48,6 +48,7 @@ import proPic from '../images/proPic/WhatsApp Image 2025-07-28 at 08.22.24_2a126
 // @ts-ignore
 import proPic2 from '../images/proPic/WhatsApp Image 2025-08-16 at 08.13.28_3136f8c6.jpg'
 import proPic3 from '../images/proPic/innovesta.jpg'
+import tasteLankaImage from '../images/projects images/tatstlanka.jpg'
 
 
 import emailjs from 'emailjs-com';
@@ -154,6 +155,23 @@ export default function PortfolioHomepage():any {
         },
         {
             id: 3,
+            title: "TasteLanka Mobile App (Freelance)",
+            description:
+                "Developed a mobile application for a Sri Lankan recipe platform using React Native. Implemented features for browsing recipes, adding favorites, and managing user profiles. Contributed to building an interactive and responsive UI optimized for both Android and iOS devices.",
+            image: tasteLankaImage,
+            technologies: ["React Native", "JavaScript", "Firebase", "Expo", "REST API"],
+            category: "UI UX",
+            status: "Completed",
+            githubUrl: "https://github.com/yourusername/tastelanka-app", // replace with actual repo if available
+            highlights: [
+                "Cross-platform mobile app (iOS & Android)",
+                "Recipe browsing, search, and favorites functionality",
+                "Interactive and user-friendly UI design",
+                "Integration with Firebase for real-time data storage"
+            ]
+        },
+        {
+            id: 4,
             title: "E-commerce Web Application",
             description:
                 "Full-stack e-commerce web application developed using JavaEE, JSP, and JDBC connection pooling. Includes product management, user authentication, cart functionality, and order processing. Built with a layered architecture for scalability and maintainability.",
@@ -171,7 +189,7 @@ export default function PortfolioHomepage():any {
             ]
         },
         {
-            id: 4,
+            id: 5,
             title: "Library Management System",
             description: "Full-stack Library Management System with React frontend and Node.js/Express backend.",
             image:lib,
@@ -189,7 +207,7 @@ export default function PortfolioHomepage():any {
             ]
         },
         {
-            id: 5,
+            id: 6,
             title: "Daffodil Holidays Tourism Website (Freelance)",
             description:
                 "Developed the front-end UI for a Sri Lankan tourism company website using React.js. Implemented an email-based booking functionality to allow customers to make inquiries and reservations online. Contribution included designing and building the complete responsive user interface.",
@@ -205,6 +223,24 @@ export default function PortfolioHomepage():any {
                 "Optimized for desktop and mobile devices"
             ]
         },
+        {
+            id: 7,
+            title: "TasteLanka Mobile App (Freelance)",
+            description:
+                "Developed a mobile application for a Sri Lankan recipe platform using React Native. Implemented features for browsing recipes, adding favorites, and managing user profiles. Contributed to building an interactive and responsive UI optimized for both Android and iOS devices.",
+            image: tasteLankaImage,
+            technologies: ["React Native", "JavaScript", "Firebase", "Expo", "REST API"],
+            category: "UI UX",
+            status: "Completed",
+            githubUrl: "https://github.com/yourusername/tastelanka-app", // replace with actual repo if available
+            highlights: [
+                "Cross-platform mobile app (iOS & Android)",
+                "Recipe browsing, search, and favorites functionality",
+                "Interactive and user-friendly UI design",
+                "Integration with Firebase for real-time data storage"
+            ]
+        }
+
 
     ];
 

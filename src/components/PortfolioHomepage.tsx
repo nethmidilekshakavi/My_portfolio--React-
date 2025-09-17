@@ -230,7 +230,7 @@ export default function PortfolioHomepage():any {
                 "Developed a mobile application for a Sri Lankan recipe platform using React Native. Implemented features for browsing recipes, adding favorites, and managing user profiles. Contributed to building an interactive and responsive UI optimized for both Android and iOS devices.",
             image: tasteLankaImage,
             technologies: ["React Native", "JavaScript", "Firebase", "Expo", "REST API"],
-            category: "UI UX",
+            category: "Full Stack",
             status: "Completed",
             githubUrl: "https://github.com/yourusername/tastelanka-app", // replace with actual repo if available
             highlights: [

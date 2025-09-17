@@ -155,7 +155,7 @@ export default function PortfolioHomepage():any {
         },
         {
             id: 3,
-            title: "TasteLanka Mobile App (Freelance)",
+            title: "TasteLanka Mobile App",
             description:
                 "Developed a mobile application for a Sri Lankan recipe platform using React Native. Implemented features for browsing recipes, adding favorites, and managing user profiles. Contributed to building an interactive and responsive UI optimized for both Android and iOS devices.",
             image: tasteLankaImage,

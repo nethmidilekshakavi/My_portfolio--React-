@@ -46,7 +46,7 @@ import dne from '../images/projects images/DNE.png'
 // @ts-ignore
 import proPic from '../images/proPic/WhatsApp Image 2025-07-28 at 08.22.24_2a126f02.jpg'
 // @ts-ignore
-import proPic2 from '../images/proPic/WhatsApp Image 2025-08-16 at 08.13.28_3136f8c6.jpg'
+import proPic2 from '../images/proPic/profilePic.jpg'
 import proPic3 from '../images/proPic/innovesta.jpg'
 import tasteLankaImage from '../images/projects images/tatstlanka.jpg'
 
